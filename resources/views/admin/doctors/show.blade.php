@@ -52,7 +52,7 @@
                             {{ trans('cruds.doctor.fields.designation') }}
                         </th>
                         <td>
-                            {{ $doctor->designation }}
+                            {{ $doctor->designation->title ?? '' }}
                         </td>
                     </tr>
                     <tr>

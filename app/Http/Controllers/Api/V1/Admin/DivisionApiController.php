@@ -15,7 +15,7 @@ class DivisionApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('division_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('division_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new DivisionResource(Division::all());
     }
@@ -31,7 +31,7 @@ class DivisionApiController extends Controller
 
     public function show(Division $division)
     {
-        abort_if(Gate::denies('division_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('division_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new DivisionResource($division);
     }
@@ -47,7 +47,7 @@ class DivisionApiController extends Controller
 
     public function destroy(Division $division)
     {
-        abort_if(Gate::denies('division_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('division_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $division->delete();
 

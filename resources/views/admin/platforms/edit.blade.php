@@ -122,6 +122,56 @@
                 <span class="help-block">{{ trans('cruds.platform.fields.about_us_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="objectives">{{ trans('cruds.platform.fields.objectives') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('objectives') ? 'is-invalid' : '' }}" name="objectives" id="objectives">{!! old('objectives', $platform->objectives) !!}</textarea>
+                @if($errors->has('objectives'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('objectives') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.platform.fields.objectives_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="professional_experience">{{ trans('cruds.platform.fields.professional_experience') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('professional_experience') ? 'is-invalid' : '' }}" name="professional_experience" id="professional_experience">{!! old('professional_experience', $platform->professional_experience) !!}</textarea>
+                @if($errors->has('professional_experience'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('professional_experience') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.platform.fields.professional_experience_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="academic_qualification">{{ trans('cruds.platform.fields.academic_qualification') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('academic_qualification') ? 'is-invalid' : '' }}" name="academic_qualification" id="academic_qualification">{!! old('academic_qualification', $platform->academic_qualification) !!}</textarea>
+                @if($errors->has('academic_qualification'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('academic_qualification') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.platform.fields.academic_qualification_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="training">{{ trans('cruds.platform.fields.training') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('training') ? 'is-invalid' : '' }}" name="training" id="training">{!! old('training', $platform->training) !!}</textarea>
+                @if($errors->has('training'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('training') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.platform.fields.training_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="services">{{ trans('cruds.platform.fields.services') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('services') ? 'is-invalid' : '' }}" name="services" id="services">{!! old('services', $platform->services) !!}</textarea>
+                @if($errors->has('services'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('services') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.platform.fields.services_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

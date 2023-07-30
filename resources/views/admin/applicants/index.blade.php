@@ -36,12 +36,6 @@
                             {{ trans('cruds.applicant.fields.phone') }}
                         </th>
                         <th>
-                            {{ trans('cruds.applicant.fields.email') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.applicant.fields.blood_group') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.applicant.fields.address') }}
                         </th>
                         <th>
@@ -65,17 +59,6 @@
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <select class="search" strict="true">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach(App\Models\Applicant::BLOOD_GROUP_SELECT as $key => $item)
-                                    <option value="{{ $item }}">{{ $item }}</option>
-                                @endforeach
-                            </select>
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -109,12 +92,6 @@
                             </td>
                             <td>
                                 {{ $applicant->phone ?? '' }}
-                            </td>
-                            <td>
-                                {{ $applicant->email ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\Applicant::BLOOD_GROUP_SELECT[$applicant->blood_group] ?? '' }}
                             </td>
                             <td>
                                 {{ $applicant->address ?? '' }}

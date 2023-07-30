@@ -45,10 +45,6 @@ class UpdateAppointmentRequest extends FormRequest
                 'required',
                 'date_format:' . config('panel.date_format'),
             ],
-            'status_id' => [
-                'required',
-                'integer',
-            ],
         ];
     }
 }

@@ -15,7 +15,7 @@ class UpazilaApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('upazila_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('upazila_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new UpazilaResource(Upazila::with(['district'])->get());
     }
@@ -31,7 +31,7 @@ class UpazilaApiController extends Controller
 
     public function show(Upazila $upazila)
     {
-        abort_if(Gate::denies('upazila_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('upazila_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new UpazilaResource($upazila->load(['district']));
     }
@@ -47,7 +47,7 @@ class UpazilaApiController extends Controller
 
     public function destroy(Upazila $upazila)
     {
-        abort_if(Gate::denies('upazila_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('upazila_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $upazila->delete();
 

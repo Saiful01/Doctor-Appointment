@@ -20,6 +20,11 @@ class CreatePlatformsTable extends Migration
             $table->string('twiter_url')->nullable();
             $table->string('linked_in_url')->nullable();
             $table->longText('about_us')->nullable();
+            $table->longText('objectives')->nullable();
+            $table->longText('professional_experience')->nullable();
+            $table->longText('academic_qualification')->nullable();
+            $table->longText('training')->nullable();
+            $table->longText('services')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

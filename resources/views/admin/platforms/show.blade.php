@@ -115,6 +115,46 @@
                             {!! $platform->about_us !!}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.platform.fields.objectives') }}
+                        </th>
+                        <td>
+                            {!! $platform->objectives !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.platform.fields.professional_experience') }}
+                        </th>
+                        <td>
+                            {!! $platform->professional_experience !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.platform.fields.academic_qualification') }}
+                        </th>
+                        <td>
+                            {!! $platform->academic_qualification !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.platform.fields.training') }}
+                        </th>
+                        <td>
+                            {!! $platform->training !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.platform.fields.services') }}
+                        </th>
+                        <td>
+                            {!! $platform->services !!}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

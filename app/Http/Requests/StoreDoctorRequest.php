@@ -25,16 +25,12 @@ class StoreDoctorRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'designation' => [
-                'string',
+            'designation_id' => [
                 'required',
+                'integer',
             ],
             'gender' => [
                 'required',
-            ],
-            'address' => [
-                'string',
-                'nullable',
             ],
             'specialists.*' => [
                 'integer',
@@ -56,6 +52,10 @@ class StoreDoctorRequest extends FormRequest
             'days' => [
                 'required',
                 'array',
+            ],
+            'address' => [
+                'string',
+                'nullable',
             ],
             'pro_image' => [
                 'required',

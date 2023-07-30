@@ -18,7 +18,7 @@ class HospitalApiController extends Controller
 
     public function index()
     {
-        abort_if(Gate::denies('hospital_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('hospital_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new HospitalResource(Hospital::all());
     }
@@ -38,7 +38,7 @@ class HospitalApiController extends Controller
 
     public function show(Hospital $hospital)
     {
-        abort_if(Gate::denies('hospital_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('hospital_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new HospitalResource($hospital);
     }
@@ -65,7 +65,7 @@ class HospitalApiController extends Controller
 
     public function destroy(Hospital $hospital)
     {
-        abort_if(Gate::denies('hospital_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('hospital_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $hospital->delete();
 

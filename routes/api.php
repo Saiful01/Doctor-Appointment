@@ -1,5 +1,10 @@
 <?php
 
+
+use App\Http\Controllers\Api\V1\Admin\UsersApiController;
+
+Route::post('/auth/login', [UsersApiController::class, 'loginUser']);
+
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Users
     Route::apiResource('users', 'UsersApiController');
@@ -63,4 +68,14 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Platform
     Route::post('platforms/media', 'PlatformApiController@storeMedia')->name('platforms.storeMedia');
     Route::apiResource('platforms', 'PlatformApiController');
+
+    // Designation
+    Route::apiResource('designations', 'DesignationApiController');
+
+    // Gallery
+    Route::post('galleries/media', 'GalleryApiController@storeMedia')->name('galleries.storeMedia');
+    Route::apiResource('galleries', 'GalleryApiController');
+
+    // Video
+    Route::apiResource('videos', 'VideoApiController');
 });

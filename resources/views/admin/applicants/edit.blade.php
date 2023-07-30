@@ -56,19 +56,19 @@
                 <span class="help-block">{{ trans('cruds.applicant.fields.blood_group_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.applicant.fields.male') }}</label>
-                @foreach(App\Models\Applicant::MALE_RADIO as $key => $label)
-                    <div class="form-check {{ $errors->has('male') ? 'is-invalid' : '' }}">
-                        <input class="form-check-input" type="radio" id="male_{{ $key }}" name="male" value="{{ $key }}" {{ old('male', $applicant->male) === (string) $key ? 'checked' : '' }} required>
-                        <label class="form-check-label" for="male_{{ $key }}">{{ $label }}</label>
+                <label class="required">{{ trans('cruds.applicant.fields.gender') }}</label>
+                @foreach(App\Models\Applicant::GENDER_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('gender') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="gender_{{ $key }}" name="gender" value="{{ $key }}" {{ old('gender', $applicant->gender) === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label" for="gender_{{ $key }}">{{ $label }}</label>
                     </div>
                 @endforeach
-                @if($errors->has('male'))
+                @if($errors->has('gender'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('male') }}
+                        {{ $errors->first('gender') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.applicant.fields.male_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.applicant.fields.gender_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="division_id">{{ trans('cruds.applicant.fields.division') }}</label>
@@ -143,6 +143,16 @@
                 <span class="help-block">{{ trans('cruds.applicant.fields.dob_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="password">{{ trans('cruds.applicant.fields.password') }}</label>
+                <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password">
+                @if($errors->has('password'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('password') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.applicant.fields.password_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label>{{ trans('cruds.applicant.fields.is_active') }}</label>
                 @foreach(App\Models\Applicant::IS_ACTIVE_RADIO as $key => $label)
                     <div class="form-check {{ $errors->has('is_active') ? 'is-invalid' : '' }}">
@@ -156,16 +166,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.applicant.fields.is_active_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="password">{{ trans('cruds.applicant.fields.password') }}</label>
-                <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password">
-                @if($errors->has('password'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('password') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.applicant.fields.password_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

@@ -213,6 +213,56 @@
                 </a>
             </li>
         @endcan
+        @can('user_alert_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.user-alerts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/user-alerts") || request()->is("admin/user-alerts/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-bell c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.userAlert.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('blog_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.blogs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/blogs") || request()->is("admin/blogs/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fab fa-blogger-b c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.blog.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('platform_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.platforms.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/platforms") || request()->is("admin/platforms/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-home c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.platform.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('designation_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.designations.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/designations") || request()->is("admin/designations/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-pen-alt c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.designation.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('gallery_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.galleries.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/galleries") || request()->is("admin/galleries/*") ? "c-active" : "" }}">
+                    <i class="fa-fw far fa-images c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.gallery.title') }}
+                </a>
+            </li>
+        @endcan
         @can('location_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/divisions*") ? "c-show" : "" }} {{ request()->is("admin/districts*") ? "c-show" : "" }} {{ request()->is("admin/upazilas*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -255,26 +305,6 @@
                 </ul>
             </li>
         @endcan
-        @can('user_alert_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.user-alerts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/user-alerts") || request()->is("admin/user-alerts/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-bell c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.userAlert.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('blog_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.blogs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/blogs") || request()->is("admin/blogs/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fab fa-blogger-b c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.blog.title') }}
-                </a>
-            </li>
-        @endcan
         @can('faq_management_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/faq-categories*") ? "c-show" : "" }} {{ request()->is("admin/faq-questions*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -307,13 +337,13 @@
                 </ul>
             </li>
         @endcan
-        @can('platform_access')
+        @can('video_access')
             <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.platforms.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/platforms") || request()->is("admin/platforms/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-home c-sidebar-nav-icon">
+                <a href="{{ route("admin.videos.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/videos") || request()->is("admin/videos/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fab fa-youtube c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.platform.title') }}
+                    {{ trans('cruds.video.title') }}
                 </a>
             </li>
         @endcan

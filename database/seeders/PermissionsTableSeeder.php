@@ -492,6 +492,66 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 121,
+                'title' => 'designation_create',
+            ],
+            [
+                'id'    => 122,
+                'title' => 'designation_edit',
+            ],
+            [
+                'id'    => 123,
+                'title' => 'designation_show',
+            ],
+            [
+                'id'    => 124,
+                'title' => 'designation_delete',
+            ],
+            [
+                'id'    => 125,
+                'title' => 'designation_access',
+            ],
+            [
+                'id'    => 126,
+                'title' => 'gallery_create',
+            ],
+            [
+                'id'    => 127,
+                'title' => 'gallery_edit',
+            ],
+            [
+                'id'    => 128,
+                'title' => 'gallery_show',
+            ],
+            [
+                'id'    => 129,
+                'title' => 'gallery_delete',
+            ],
+            [
+                'id'    => 130,
+                'title' => 'gallery_access',
+            ],
+            [
+                'id'    => 131,
+                'title' => 'video_create',
+            ],
+            [
+                'id'    => 132,
+                'title' => 'video_edit',
+            ],
+            [
+                'id'    => 133,
+                'title' => 'video_show',
+            ],
+            [
+                'id'    => 134,
+                'title' => 'video_delete',
+            ],
+            [
+                'id'    => 135,
+                'title' => 'video_access',
+            ],
+            [
+                'id'    => 136,
                 'title' => 'profile_password_edit',
             ],
         ];

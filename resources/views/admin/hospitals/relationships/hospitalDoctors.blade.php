@@ -31,37 +31,7 @@
                             {{ trans('cruds.doctor.fields.phone') }}
                         </th>
                         <th>
-                            {{ trans('cruds.doctor.fields.email') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.doctor.fields.designation') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.doctor.fields.gender') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.doctor.fields.specialist') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.doctor.fields.hospital') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.doctor.fields.day') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.doctor.fields.address') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.doctor.fields.short_details') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.doctor.fields.pro_image') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.doctor.fields.fee') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.doctor.fields.old_fee') }}
                         </th>
                         <th>
                             &nbsp;
@@ -84,47 +54,9 @@
                                 {{ $doctor->phone ?? '' }}
                             </td>
                             <td>
-                                {{ $doctor->email ?? '' }}
-                            </td>
-                            <td>
-                                {{ $doctor->designation ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\Doctor::GENDER_RADIO[$doctor->gender] ?? '' }}
-                            </td>
-                            <td>
-                                @foreach($doctor->specialists as $key => $item)
-                                    <span class="badge badge-info">{{ $item->title }}</span>
-                                @endforeach
-                            </td>
-                            <td>
                                 @foreach($doctor->hospitals as $key => $item)
                                     <span class="badge badge-info">{{ $item->title }}</span>
                                 @endforeach
-                            </td>
-                            <td>
-                                @foreach($doctor->days as $key => $item)
-                                    <span class="badge badge-info">{{ $item->name }}</span>
-                                @endforeach
-                            </td>
-                            <td>
-                                {{ $doctor->address ?? '' }}
-                            </td>
-                            <td>
-                                {{ $doctor->short_details ?? '' }}
-                            </td>
-                            <td>
-                                @if($doctor->pro_image)
-                                    <a href="{{ $doctor->pro_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $doctor->pro_image->getUrl('thumb') }}">
-                                    </a>
-                                @endif
-                            </td>
-                            <td>
-                                {{ $doctor->fee ?? '' }}
-                            </td>
-                            <td>
-                                {{ $doctor->old_fee ?? '' }}
                             </td>
                             <td>
                                 @can('doctor_show')

@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyDoctorRequest;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
+use App\Models\Designation;
 use App\Models\Doctor;
 use App\Models\Hospital;
 use App\Models\Specialist;
@@ -24,7 +25,7 @@ class DoctorController extends Controller
     {
         abort_if(Gate::denies('doctor_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $doctors = Doctor::with(['specialists', 'hospitals', 'days', 'media'])->get();
+        $doctors = Doctor::with(['designation', 'specialists', 'hospitals', 'days', 'media'])->get();
 
         return view('admin.doctors.index', compact('doctors'));
     }
@@ -33,13 +34,15 @@ class DoctorController extends Controller
     {
         abort_if(Gate::denies('doctor_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $designations = Designation::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $specialists = Specialist::pluck('title', 'id');
 
         $hospitals = Hospital::pluck('title', 'id');
 
         $days = WeeklyDay::pluck('name', 'id');
 
-        return view('admin.doctors.create', compact('days', 'hospitals', 'specialists'));
+        return view('admin.doctors.create', compact('days', 'designations', 'hospitals', 'specialists'));
     }
 
     public function store(StoreDoctorRequest $request)
@@ -63,15 +66,17 @@ class DoctorController extends Controller
     {
         abort_if(Gate::denies('doctor_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $designations = Designation::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $specialists = Specialist::pluck('title', 'id');
 
         $hospitals = Hospital::pluck('title', 'id');
 
         $days = WeeklyDay::pluck('name', 'id');
 
-        $doctor->load('specialists', 'hospitals', 'days');
+        $doctor->load('designation', 'specialists', 'hospitals', 'days');
 
-        return view('admin.doctors.edit', compact('days', 'doctor', 'hospitals', 'specialists'));
+        return view('admin.doctors.edit', compact('days', 'designations', 'doctor', 'hospitals', 'specialists'));
     }
 
     public function update(UpdateDoctorRequest $request, Doctor $doctor)
@@ -98,7 +103,7 @@ class DoctorController extends Controller
     {
         abort_if(Gate::denies('doctor_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $doctor->load('specialists', 'hospitals', 'days', 'doctorDoctorSerials', 'doctorAppointments');
+        $doctor->load('designation', 'specialists', 'hospitals', 'days', 'doctorDoctorSerials', 'doctorAppointments');
 
         return view('admin.doctors.show', compact('doctor'));
     }

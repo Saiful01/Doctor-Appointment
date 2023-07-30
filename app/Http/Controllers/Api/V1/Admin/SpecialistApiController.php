@@ -18,7 +18,7 @@ class SpecialistApiController extends Controller
 
     public function index()
     {
-        abort_if(Gate::denies('specialist_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('specialist_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new SpecialistResource(Specialist::all());
     }
@@ -38,7 +38,7 @@ class SpecialistApiController extends Controller
 
     public function show(Specialist $specialist)
     {
-        abort_if(Gate::denies('specialist_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('specialist_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new SpecialistResource($specialist);
     }
@@ -65,7 +65,7 @@ class SpecialistApiController extends Controller
 
     public function destroy(Specialist $specialist)
     {
-        abort_if(Gate::denies('specialist_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('specialist_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $specialist->delete();
 

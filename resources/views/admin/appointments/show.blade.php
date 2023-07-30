@@ -60,7 +60,7 @@
                             {{ trans('cruds.appointment.fields.serial') }}
                         </th>
                         <td>
-                            {{ $appointment->serial->type ?? '' }}
+                            {{ $appointment->serial->title ?? '' }}
                         </td>
                     </tr>
                     <tr>

@@ -46,9 +46,6 @@
                             {{ trans('cruds.appointment.fields.appointment_token') }}
                         </th>
                         <th>
-                            {{ trans('cruds.appointment.fields.applicant_type') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.appointment.fields.appoint_date') }}
                         </th>
                         <th>
@@ -81,16 +78,13 @@
                                 {{ $appointment->hospital->title ?? '' }}
                             </td>
                             <td>
-                                {{ $appointment->serial->type ?? '' }}
+                                {{ $appointment->serial->title ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\Appointment::APPOINT_TYPE_SELECT[$appointment->appoint_type] ?? '' }}
                             </td>
                             <td>
                                 {{ $appointment->appointment_token ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\Appointment::APPLICANT_TYPE_SELECT[$appointment->applicant_type] ?? '' }}
                             </td>
                             <td>
                                 {{ $appointment->appoint_date ?? '' }}

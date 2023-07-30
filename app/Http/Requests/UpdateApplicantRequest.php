@@ -31,7 +31,7 @@ class UpdateApplicantRequest extends FormRequest
             'blood_group' => [
                 'required',
             ],
-            'male' => [
+            'gender' => [
                 'required',
             ],
             'age' => [
