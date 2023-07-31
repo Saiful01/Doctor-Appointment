@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => null,
             ],
             [
-                'id'             => 2,
+                'id'             => 3,
                 'name'           => 'Asad',
                 'email'          => 'asad@gmail.com',
                 'password'       => bcrypt('123456'),
