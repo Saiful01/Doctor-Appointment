@@ -15,7 +15,7 @@ class StatusApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('status_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('status_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new StatusResource(Status::all());
     }
@@ -31,7 +31,7 @@ class StatusApiController extends Controller
 
     public function show(Status $status)
     {
-        abort_if(Gate::denies('status_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('status_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new StatusResource($status);
     }
@@ -47,7 +47,7 @@ class StatusApiController extends Controller
 
     public function destroy(Status $status)
     {
-        abort_if(Gate::denies('status_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('status_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $status->delete();
 

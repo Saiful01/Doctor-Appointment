@@ -15,7 +15,7 @@ class DistrictApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('district_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('district_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new DistrictResource(District::with(['division'])->get());
     }
@@ -31,7 +31,7 @@ class DistrictApiController extends Controller
 
     public function show(District $district)
     {
-        abort_if(Gate::denies('district_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('district_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new DistrictResource($district->load(['division']));
     }
@@ -47,7 +47,7 @@ class DistrictApiController extends Controller
 
     public function destroy(District $district)
     {
-        abort_if(Gate::denies('district_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('district_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $district->delete();
 

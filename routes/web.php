@@ -124,6 +124,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('platforms/ckmedia', 'PlatformController@storeCKEditorImages')->name('platforms.storeCKEditorImages');
     Route::resource('platforms', 'PlatformController');
 
+    // Designation
+    Route::delete('designations/destroy', 'DesignationController@massDestroy')->name('designations.massDestroy');
+    Route::resource('designations', 'DesignationController');
+
+    // Gallery
+    Route::delete('galleries/destroy', 'GalleryController@massDestroy')->name('galleries.massDestroy');
+    Route::post('galleries/media', 'GalleryController@storeMedia')->name('galleries.storeMedia');
+    Route::post('galleries/ckmedia', 'GalleryController@storeCKEditorImages')->name('galleries.storeCKEditorImages');
+    Route::resource('galleries', 'GalleryController');
+
+    // Video
+    Route::delete('videos/destroy', 'VideoController@massDestroy')->name('videos.massDestroy');
+    Route::resource('videos', 'VideoController');
+
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
     Route::post('messenger', 'MessengerController@storeTopic')->name('messenger.storeTopic');

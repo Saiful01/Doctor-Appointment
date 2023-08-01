@@ -28,13 +28,10 @@ class StoreApplicantRequest extends FormRequest
                 'required',
                 'unique:applicants',
             ],
-            'password' => [
-                'required',
-            ],
             'blood_group' => [
                 'required',
             ],
-            'male' => [
+            'gender' => [
                 'required',
             ],
             'age' => [
@@ -46,6 +43,9 @@ class StoreApplicantRequest extends FormRequest
             'dob' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
+            ],
+            'password' => [
+                'required',
             ],
         ];
     }

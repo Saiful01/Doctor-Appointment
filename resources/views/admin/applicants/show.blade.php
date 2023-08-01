@@ -57,10 +57,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.applicant.fields.male') }}
+                            {{ trans('cruds.applicant.fields.gender') }}
                         </th>
                         <td>
-                            {{ App\Models\Applicant::MALE_RADIO[$applicant->male] ?? '' }}
+                            {{ App\Models\Applicant::GENDER_RADIO[$applicant->gender] ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -113,18 +113,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.applicant.fields.is_active') }}
-                        </th>
-                        <td>
-                            {{ App\Models\Applicant::IS_ACTIVE_RADIO[$applicant->is_active] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.applicant.fields.password') }}
                         </th>
                         <td>
                             ********
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.applicant.fields.is_active') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Applicant::IS_ACTIVE_RADIO[$applicant->is_active] ?? '' }}
                         </td>
                     </tr>
                 </tbody>

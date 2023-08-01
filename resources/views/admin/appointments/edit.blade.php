@@ -131,8 +131,8 @@
                 <span class="help-block">{{ trans('cruds.appointment.fields.appoint_date_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="status_id">{{ trans('cruds.appointment.fields.status') }}</label>
-                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
+                <label for="status_id">{{ trans('cruds.appointment.fields.status') }}</label>
+                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id">
                     @foreach($statuses as $id => $entry)
                         <option value="{{ $id }}" {{ (old('status_id') ? old('status_id') : $appointment->status->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach

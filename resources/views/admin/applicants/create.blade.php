@@ -55,19 +55,19 @@
                 <span class="help-block">{{ trans('cruds.applicant.fields.blood_group_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.applicant.fields.male') }}</label>
-                @foreach(App\Models\Applicant::MALE_RADIO as $key => $label)
-                    <div class="form-check {{ $errors->has('male') ? 'is-invalid' : '' }}">
-                        <input class="form-check-input" type="radio" id="male_{{ $key }}" name="male" value="{{ $key }}" {{ old('male', '') === (string) $key ? 'checked' : '' }} required>
-                        <label class="form-check-label" for="male_{{ $key }}">{{ $label }}</label>
+                <label class="required">{{ trans('cruds.applicant.fields.gender') }}</label>
+                @foreach(App\Models\Applicant::GENDER_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('gender') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="gender_{{ $key }}" name="gender" value="{{ $key }}" {{ old('gender', '') === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label" for="gender_{{ $key }}">{{ $label }}</label>
                     </div>
                 @endforeach
-                @if($errors->has('male'))
+                @if($errors->has('gender'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('male') }}
+                        {{ $errors->first('gender') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.applicant.fields.male_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.applicant.fields.gender_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="division_id">{{ trans('cruds.applicant.fields.division') }}</label>

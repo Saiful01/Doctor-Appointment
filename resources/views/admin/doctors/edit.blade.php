@@ -41,8 +41,12 @@
                 <span class="help-block">{{ trans('cruds.doctor.fields.email_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="designation">{{ trans('cruds.doctor.fields.designation') }}</label>
-                <input class="form-control {{ $errors->has('designation') ? 'is-invalid' : '' }}" type="text" name="designation" id="designation" value="{{ old('designation', $doctor->designation) }}" required>
+                <label class="required" for="designation_id">{{ trans('cruds.doctor.fields.designation') }}</label>
+                <select class="form-control select2 {{ $errors->has('designation') ? 'is-invalid' : '' }}" name="designation_id" id="designation_id" required>
+                    @foreach($designations as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('designation_id') ? old('designation_id') : $doctor->designation->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
                 @if($errors->has('designation'))
                     <div class="invalid-feedback">
                         {{ $errors->first('designation') }}

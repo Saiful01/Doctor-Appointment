@@ -30,7 +30,7 @@ class Applicant extends Model
         'InActive' => 'InActive',
     ];
 
-    public const MALE_RADIO = [
+    public const GENDER_RADIO = [
         'Male'   => 'Male',
         'Female' => 'Female',
         'Other'  => 'Other',
@@ -40,16 +40,16 @@ class Applicant extends Model
         'name',
         'phone',
         'email',
-        'address',
-        'password',
-        'is_active',
         'blood_group',
-        'male',
+        'gender',
         'division_id',
         'district_id',
         'upazila_id',
+        'address',
         'age',
         'dob',
+        'password',
+        'is_active',
         'created_at',
         'updated_at',
         'deleted_at',

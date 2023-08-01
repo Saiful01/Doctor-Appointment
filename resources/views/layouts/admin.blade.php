@@ -23,6 +23,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     @yield('styles')
+   {{-- <style>
+        #sidebar li {
+            border: 1px solid #f1ecec !important;
+        }
+    </style>--}}
 </head>
 
 <body class="c-app">

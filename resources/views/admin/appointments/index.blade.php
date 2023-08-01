@@ -51,9 +51,6 @@
                             {{ trans('cruds.appointment.fields.appointment_token') }}
                         </th>
                         <th>
-                            {{ trans('cruds.appointment.fields.applicant_type') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.appointment.fields.appoint_date') }}
                         </th>
                         <th>
@@ -99,7 +96,7 @@
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
                                 @foreach($doctor_serials as $key => $item)
-                                    <option value="{{ $item->type }}">{{ $item->type }}</option>
+                                    <option value="{{ $item->title }}">{{ $item->title }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -113,14 +110,6 @@
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <select class="search" strict="true">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach(App\Models\Appointment::APPLICANT_TYPE_SELECT as $key => $item)
-                                    <option value="{{ $item }}">{{ $item }}</option>
-                                @endforeach
-                            </select>
                         </td>
                         <td>
                         </td>
@@ -158,16 +147,13 @@
                                 {{ $appointment->hospital->title ?? '' }}
                             </td>
                             <td>
-                                {{ $appointment->serial->type ?? '' }}
+                                {{ $appointment->serial->title ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\Appointment::APPOINT_TYPE_SELECT[$appointment->appoint_type] ?? '' }}
                             </td>
                             <td>
                                 {{ $appointment->appointment_token ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\Appointment::APPLICANT_TYPE_SELECT[$appointment->applicant_type] ?? '' }}
                             </td>
                             <td>
                                 {{ $appointment->appoint_date ?? '' }}

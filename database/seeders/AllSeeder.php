@@ -64,7 +64,7 @@ class AllSeeder extends Seeder
                 'phone' => '01825013101',
                 'address' => 'Mirpur-1, Dhaka',
                 'blood_group' => 'O+',
-                'male' => 'Male',
+                'gender' => 'Male',
                 'age' => '27',
                 'dob' => '1997-12-12',
                 'password'       => bcrypt('password'),
@@ -80,14 +80,14 @@ class AllSeeder extends Seeder
         $hospital = [
             [
                 'id' => 1,
-                'title' => 'Labaid Hospital',
+                'title' => 'AMZ Hospital',
 
 
             ],
 
             [
                 'id' => 2,
-                'title' => 'Square Hospital',
+                'title' => 'Farazi Hospital',
 
             ],
         ];
@@ -98,7 +98,7 @@ class AllSeeder extends Seeder
         $status = [
             [
                 'id' => 1,
-                'title' => 'Pending',
+                'title' => 'Submitted',
 
 
             ],

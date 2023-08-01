@@ -25,16 +25,12 @@ class UpdateDoctorRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'designation' => [
-                'string',
+            'designation_id' => [
                 'required',
+                'integer',
             ],
             'gender' => [
                 'required',
-            ],
-            'address' => [
-                'string',
-                'nullable',
             ],
             'specialists.*' => [
                 'integer',
@@ -56,6 +52,10 @@ class UpdateDoctorRequest extends FormRequest
             'days' => [
                 'required',
                 'array',
+            ],
+            'address' => [
+                'string',
+                'nullable',
             ],
             'pro_image' => [
                 'required',

@@ -14,7 +14,7 @@ class UserAlertsApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('user_alert_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('user_alert_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new UserAlertResource(UserAlert::with(['users'])->get());
     }
@@ -31,14 +31,14 @@ class UserAlertsApiController extends Controller
 
     public function show(UserAlert $userAlert)
     {
-        abort_if(Gate::denies('user_alert_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('user_alert_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new UserAlertResource($userAlert->load(['users']));
     }
 
     public function destroy(UserAlert $userAlert)
     {
-        abort_if(Gate::denies('user_alert_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('user_alert_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $userAlert->delete();
 

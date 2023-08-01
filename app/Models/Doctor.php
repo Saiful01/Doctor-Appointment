@@ -36,7 +36,7 @@ class Doctor extends Model implements HasMedia
         'name',
         'phone',
         'email',
-        'designation',
+        'designation_id',
         'gender',
         'address',
         'short_details',
@@ -67,6 +67,11 @@ class Doctor extends Model implements HasMedia
     public function doctorAppointments()
     {
         return $this->hasMany(Appointment::class, 'doctor_id', 'id');
+    }
+
+    public function designation()
+    {
+        return $this->belongsTo(Designation::class, 'designation_id');
     }
 
     public function specialists()

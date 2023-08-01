@@ -55,11 +55,9 @@ class AppointmentController extends Controller
 
         $guest_patients = GuestPatient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $serials = DoctorSerial::pluck('type', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $serials = DoctorSerial::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = Status::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.appointments.create', compact('applicants', 'doctors', 'guest_patients', 'hospitals', 'serials', 'statuses'));
+        return view('admin.appointments.create', compact('applicants', 'doctors', 'guest_patients', 'hospitals', 'serials'));
     }
 
     public function store(StoreAppointmentRequest $request)
@@ -81,7 +79,7 @@ class AppointmentController extends Controller
 
         $guest_patients = GuestPatient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $serials = DoctorSerial::pluck('type', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $serials = DoctorSerial::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $statuses = Status::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 

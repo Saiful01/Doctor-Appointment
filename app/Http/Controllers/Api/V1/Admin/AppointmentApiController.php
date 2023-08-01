@@ -15,7 +15,7 @@ class AppointmentApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('appointment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('appointment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new AppointmentResource(Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->get());
     }
@@ -31,7 +31,7 @@ class AppointmentApiController extends Controller
 
     public function show(Appointment $appointment)
     {
-        abort_if(Gate::denies('appointment_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('appointment_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new AppointmentResource($appointment->load(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status']));
     }
@@ -47,7 +47,7 @@ class AppointmentApiController extends Controller
 
     public function destroy(Appointment $appointment)
     {
-        abort_if(Gate::denies('appointment_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('appointment_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $appointment->delete();
 

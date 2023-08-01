@@ -18,7 +18,7 @@ class PlatformApiController extends Controller
 
     public function index()
     {
-        abort_if(Gate::denies('platform_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('platform_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new PlatformResource(Platform::all());
     }
@@ -38,7 +38,7 @@ class PlatformApiController extends Controller
 
     public function show(Platform $platform)
     {
-        abort_if(Gate::denies('platform_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('platform_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new PlatformResource($platform);
     }
@@ -65,7 +65,7 @@ class PlatformApiController extends Controller
 
     public function destroy(Platform $platform)
     {
-        abort_if(Gate::denies('platform_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('platform_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $platform->delete();
 

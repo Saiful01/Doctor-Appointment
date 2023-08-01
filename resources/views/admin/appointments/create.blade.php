@@ -96,7 +96,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="appointment_token">{{ trans('cruds.appointment.fields.appointment_token') }}</label>
-                <input class="form-control {{ $errors->has('appointment_token') ? 'is-invalid' : '' }}" type="text" name="appointment_token" id="appointment_token" value="{{ old('appointment_token', '') }}" required>
+                <input class="form-control {{ $errors->has('appointment_token') ? 'is-invalid' : '' }}" type="text" name="appointment_token" id="appointment_token" value="{{ Str::random(10) }}" readonly required>
                 @if($errors->has('appointment_token'))
                     <div class="invalid-feedback">
                         {{ $errors->first('appointment_token') }}
@@ -121,27 +121,13 @@
             </div>
             <div class="form-group">
                 <label class="required" for="appoint_date">{{ trans('cruds.appointment.fields.appoint_date') }}</label>
-                <input class="form-control date {{ $errors->has('appoint_date') ? 'is-invalid' : '' }}" type="text" name="appoint_date" id="appoint_date" value="{{ old('appoint_date') }}" required>
+                <input class="form-control date {{ $errors->has('appoint_date') ? 'is-invalid' : '' }}" type="text" name="appoint_date" id="appoint_date" value="{{ old('appoint_date')  }}" required>
                 @if($errors->has('appoint_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('appoint_date') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.appointment.fields.appoint_date_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="status_id">{{ trans('cruds.appointment.fields.status') }}</label>
-                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
-                    @foreach($statuses as $id => $entry)
-                        <option value="{{ $id }}" {{ old('status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('status'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('status') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.appointment.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

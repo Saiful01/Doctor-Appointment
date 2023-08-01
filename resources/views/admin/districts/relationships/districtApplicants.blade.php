@@ -31,12 +31,6 @@
                             {{ trans('cruds.applicant.fields.phone') }}
                         </th>
                         <th>
-                            {{ trans('cruds.applicant.fields.email') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.applicant.fields.blood_group') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.applicant.fields.address') }}
                         </th>
                         <th>
@@ -64,12 +58,6 @@
                             </td>
                             <td>
                                 {{ $applicant->phone ?? '' }}
-                            </td>
-                            <td>
-                                {{ $applicant->email ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\Applicant::BLOOD_GROUP_SELECT[$applicant->blood_group] ?? '' }}
                             </td>
                             <td>
                                 {{ $applicant->address ?? '' }}

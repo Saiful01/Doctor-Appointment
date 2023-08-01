@@ -15,7 +15,7 @@ class WeeklyDayApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('weekly_day_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('weekly_day_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new WeeklyDayResource(WeeklyDay::all());
     }
@@ -31,7 +31,7 @@ class WeeklyDayApiController extends Controller
 
     public function show(WeeklyDay $weeklyDay)
     {
-        abort_if(Gate::denies('weekly_day_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('weekly_day_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new WeeklyDayResource($weeklyDay);
     }
@@ -47,7 +47,7 @@ class WeeklyDayApiController extends Controller
 
     public function destroy(WeeklyDay $weeklyDay)
     {
-        abort_if(Gate::denies('weekly_day_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('weekly_day_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $weeklyDay->delete();
 

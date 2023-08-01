@@ -18,7 +18,7 @@ class AppointmentReportApiController extends Controller
 
     public function index()
     {
-        abort_if(Gate::denies('appointment_report_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('appointment_report_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new AppointmentReportResource(AppointmentReport::with(['appointment'])->get());
     }
@@ -38,7 +38,7 @@ class AppointmentReportApiController extends Controller
 
     public function show(AppointmentReport $appointmentReport)
     {
-        abort_if(Gate::denies('appointment_report_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('appointment_report_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new AppointmentReportResource($appointmentReport->load(['appointment']));
     }
@@ -68,7 +68,7 @@ class AppointmentReportApiController extends Controller
 
     public function destroy(AppointmentReport $appointmentReport)
     {
-        abort_if(Gate::denies('appointment_report_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('appointment_report_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $appointmentReport->delete();
 

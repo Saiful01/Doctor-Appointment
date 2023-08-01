@@ -15,7 +15,7 @@ class ApplicantApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('applicant_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('applicant_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ApplicantResource(Applicant::with(['division', 'district', 'upazila'])->get());
     }
@@ -31,7 +31,7 @@ class ApplicantApiController extends Controller
 
     public function show(Applicant $applicant)
     {
-        abort_if(Gate::denies('applicant_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('applicant_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ApplicantResource($applicant->load(['division', 'district', 'upazila']));
     }
@@ -47,7 +47,7 @@ class ApplicantApiController extends Controller
 
     public function destroy(Applicant $applicant)
     {
-        abort_if(Gate::denies('applicant_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       // abort_if(Gate::denies('applicant_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $applicant->delete();
 

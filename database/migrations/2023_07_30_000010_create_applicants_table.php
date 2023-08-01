@@ -13,13 +13,13 @@ class CreateApplicantsTable extends Migration
             $table->string('name');
             $table->string('phone')->unique();
             $table->string('email')->nullable();
-            $table->string('blood_group')->nullable();
-            $table->string('male')->nullable();
+            $table->string('blood_group');
+            $table->string('gender');
             $table->longText('address')->nullable();
-            $table->integer('age')->nullable();
+            $table->integer('age');
             $table->date('dob')->nullable();
-            $table->string('is_active')->nullable();
             $table->string('password');
+            $table->string('is_active')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
