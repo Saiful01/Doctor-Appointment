@@ -1,5 +1,19 @@
 <?php
 
+
+
+//Web Api Routes
+
+use App\Http\Controllers\PublicApiController;
+
+Route::group(['prefix' => 'web-api'], function () {
+    Route::any('/otp-sent', [PublicApiController::class, 'otpSent'])->name('otp-sent');
+    Route::any('/otp-verify', [PublicApiController::class, 'otpVerify'])->name('otp-verify');
+    Route::any('/registration/save', [PublicApiController::class, 'registrationSave'])->name('registration-save');
+    Route::any('/reset-password', [PublicApiController::class, 'resetPassword'])->name('reset-password');
+
+});
+
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
