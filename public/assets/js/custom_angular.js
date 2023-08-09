@@ -1,4 +1,4 @@
-app.controller('challengeController', function ($scope, $http, $location) {
+app.controller('appointmentController', function ($scope, $http, $location) {
 
 
     var intervalId;

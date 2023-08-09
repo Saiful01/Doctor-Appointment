@@ -4,9 +4,16 @@
 
 //Web Api Routes
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\PublicApiController;
 
+
+
+Route::get('/', [Controller::class, 'home'])->name('home');
+Route::get('/patient/registration', [Controller::class, 'registration'])->name('patient.registration');
+
 Route::group(['prefix' => 'web-api'], function () {
+
     Route::any('/otp-sent', [PublicApiController::class, 'otpSent'])->name('otp-sent');
     Route::any('/otp-verify', [PublicApiController::class, 'otpVerify'])->name('otp-verify');
     Route::any('/registration/save', [PublicApiController::class, 'registrationSave'])->name('registration-save');
@@ -14,7 +21,7 @@ Route::group(['prefix' => 'web-api'], function () {
 
 });
 
-Route::redirect('/', '/login');
+/*Route::redirect('/', '/login');*/
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));

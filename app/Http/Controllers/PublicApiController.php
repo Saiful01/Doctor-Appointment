@@ -79,7 +79,7 @@ class PublicApiController extends Controller
                     'phone' => $phone,
                     'otp' => $otp,
                 ]);
-                $sms = "Your Challenge.gov.bd verification code is " . $otp;
+                $sms = "Your Dr Mustafiz Appointment verification code is " . $otp;
                 $sms_status = sendSms($phone, $sms);
 
             }
@@ -87,7 +87,7 @@ class PublicApiController extends Controller
             $code = 200;
             $message = "Check your inbox for OTP";
 
-            $sms = "Your Challenge.gov.bd verification code is " . $otp;
+            $sms = "Your Dr Mustafiz Appointment verification code is " . $otp;
             $sms_status = sendSms($phone, $sms);
             Otp::create([
                 'phone' => $phone,

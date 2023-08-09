@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use DateTimeInterface;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Applicant extends Model
+class Applicant extends Authenticatable
 {
     use SoftDeletes, HasFactory;
 
