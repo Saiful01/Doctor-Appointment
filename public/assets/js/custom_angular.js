@@ -6,7 +6,9 @@ app.controller('appointmentController', function ($scope, $http, $location) {
     $scope.sendOtp = function () {
 
 
-        if ($scope.phone == null || $scope.phone.toString().length < 10) {
+
+
+        if ($scope.phone == null || $scope.phone.toString().length < 10) {z
             messageError('Please enter a valid phone number with at least 10 digits')
             return;
         }
@@ -19,12 +21,14 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             $scope.phone = '0' + $scope.phone;
         }
 
+        //console.log($scope.phone)
+
         let url = "/web-api/otp-sent";
 
         let params = {
             'phone': $scope.phone,
         };
-        document.getElementById("loader").style.display = "block";
+      /*  document.getElementById("loader").style.display = "block";*/
         $http.post(url, params).then(function success(response) {
 
             console.log(response.data)
@@ -124,20 +128,32 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             messageError('Please Enter Your Gender')
             return;
         }
-        if ($scope.occupation == null) {
-            messageError('Please Enter Your Occupation')
+        if ($scope.blood_group == null) {
+            messageError('Please Enter Your Blood Group')
             return;
         }
-        if ($scope.designation == null) {
-            messageError('Please Enter Your Designation')
+        if ($scope.division_id == null) {
+            messageError('Please Enter Your Division')
             return;
         }
-        if ($scope.institution == null) {
-            messageError('Please Enter Your Institution')
+        if ($scope.district_id == null) {
+            messageError('Please Enter Your District')
+            return;
+        }
+        if ($scope.upazila_id == null) {
+            messageError('Please Enter Your Area')
             return;
         }
         if ($scope.address == null) {
-            messageError('Please Enter Your address')
+            messageError('Please Enter Your Address')
+            return;
+        }
+        if ($scope.age == null) {
+            messageError('Please Enter Your Age')
+            return;
+        }
+        if ($scope.dob == null) {
+            messageError('Please Enter Your Date of Birth')
             return;
         }
 
@@ -145,14 +161,14 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             messageError('Please Enter Your password')
             return;
         }
-        if ($scope.cnf_password == null) {
+   /*     if ($scope.cnf_password == null) {
             messageError('Please Enter Your Confirm password')
             return;
         }
         if ($scope.cnf_password != $scope.password) {
             messageError('Password And Confirm Password Not Match')
             return;
-        }
+        }*/
 
         let url = "/web-api/registration/save";
         let params = {
@@ -160,9 +176,9 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             'phone': $scope.phone,
             'email': $scope.email,
             'gender': $scope.gender,
-            'occupation': $scope.occupation,
-            'designation': $scope.designation,
-            'institution': $scope.institution,
+            'blood_group': $scope.blood_group,
+            'age': $scope.age,
+            'dob': $scope.dob,
             'address': $scope.address,
             'password': $scope.password,
         };

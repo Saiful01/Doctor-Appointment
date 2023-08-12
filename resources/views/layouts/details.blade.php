@@ -26,7 +26,6 @@
     <link href="/assets/css/style.min.css" class="theme-opt" rel="stylesheet" type="text/css"/>
 
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
@@ -39,6 +38,7 @@
     <script src="/assets/js/custom_angular.js"></script>
 
 </head>
+
 
 <body ng-app="myApp" ng-controller="appointmentController">
 <!-- Loader -->
@@ -53,19 +53,14 @@
 <!-- Loader -->
 
 <!-- Navbar STart -->
-<header id="topnav" class="navigation sticky">
+<header id="topnav" class="defaultscroll sticky">
     <div class="container">
         <!-- Logo container-->
-        <div>
-            <a class="logo" href="/">
-                        <span class="logo-light-mode">
-                            <img src="/assets/images/logo-dark.png" class="l-dark" height="22" alt="">
-                            <img src="/assets/images/logo-light.png" class="l-light" height="22" alt="">
-                        </span>
-                <img src="/assets/images/logo-light.png" height="22" class="logo-dark-mode" alt="">
-            </a>
-        </div>
-        <!-- End Logo container-->
+        <a class="logo" href="/">
+            <img src="/assets/images/logo-dark.png" height="22" class="logo-light-mode" alt="">
+            <img src="/assets/images/logo-light.png" height="22" class="logo-dark-mode" alt="">
+        </a>
+        <!-- Logo End -->
 
         <!-- Start Mobile Toggle -->
         <div class="menu-extras">
@@ -85,11 +80,18 @@
 
         <!-- Start Dropdown -->
         <ul class="dropdowns list-inline mb-0">
+            <li class="list-inline-item mb-0">
+                <a href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                   aria-controls="offcanvasRight">
+                    <div class="btn btn-icon btn-pills btn-primary"><i data-feather="settings" class="fea icon-sm"></i>
+                    </div>
+                </a>
+            </li>
 
             <li class="list-inline-item mb-0 ms-1">
                 <a href="javascript:void(0)" class="btn btn-icon btn-pills btn-primary" data-bs-toggle="offcanvas"
                    data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                    <i data-feather="search" class="fea icon-sm text-foot align-middle"></i>
+                    <i class="uil uil-search"></i>
                 </a>
             </li>
 
@@ -126,40 +128,98 @@
 
         <div id="navigation">
             <!-- Navigation Menu-->
-            <ul class="navigation-menu nav-left nav-light">
+            <ul class="navigation-menu nav-left">
                 <li class="has-submenu parent-menu-item">
-                    <a href="/" class="active">Home</a>
-
-                </li>
-                <li class="has-submenu parent-menu-item">
-                    <a href="/" class="active">About Us</a>
-
-                </li>
-                <li class="has-submenu parent-menu-item">
-                    <a href="/" class="active">Contact</a>
-
-                </li>
-                <li class="has-submenu parent-menu-item">
-                    <a href="/" class="active">Blog</a>
-
+                    <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li><a href="/" class="sub-menu-item">Index One</a></li>
+                        <li><a href="index-two.html" class="sub-menu-item">Index Two</a></li>
+                        <li><a href="index-three.html" class="sub-menu-item">Index Three</a></li>
+                    </ul>
                 </li>
 
+                <li class="has-submenu parent-parent-menu-item">
+                    <a href="javascript:void(0)">Doctors</a><span class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li class="has-submenu parent-menu-item">
+                            <a href="javascript:void(0)" class="menu-item"> Dashboard </a><span
+                                class="submenu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="doctor-dashboard.html" class="sub-menu-item">Dashboard</a></li>
+                                <li><a href="doctor-appointment.html" class="sub-menu-item">Appointment</a></li>
+                                <li><a href="patient-list.html" class="sub-menu-item">Patients</a></li>
+                                <li><a href="doctor-schedule.html" class="sub-menu-item">Schedule Timing</a></li>
+                                <li><a href="invoices.html" class="sub-menu-item">Invoices</a></li>
+                                <li><a href="patient-review.html" class="sub-menu-item">Reviews</a></li>
+                                <li><a href="doctor-messages.html" class="sub-menu-item">Messages</a></li>
+                                <li><a href="doctor-profile.html" class="sub-menu-item">Profile</a></li>
+                                <li><a href="doctor-profile-setting.html" class="sub-menu-item">Profile Settings</a>
+                                </li>
+                                <li><a href="doctor-chat.html" class="sub-menu-item">Chat</a></li>
+                                <li><a href="login.html" class="sub-menu-item">Login</a></li>
+                                <li><a href="signup.html" class="sub-menu-item">Sign Up</a></li>
+                                <li><a href="forgot-password.html" class="sub-menu-item">Forgot Password</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="doctor-team-one.html" class="sub-menu-item">Doctors One</a></li>
+                        <li><a href="doctor-team-two.html" class="sub-menu-item">Doctors Two</a></li>
+                        <li><a href="doctor-team-three.html" class="sub-menu-item">Doctors Three</a></li>
+                    </ul>
+                </li>
 
+                <li class="has-submenu parent-menu-item">
+                    <a href="javascript:void(0)">Patients</a><span class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li><a href="patient-dashboard.html" class="sub-menu-item">Dashboard</a></li>
+                        <li><a href="patient-profile.html" class="sub-menu-item">Profile</a></li>
+                        <li><a href="booking-appointment.html" class="sub-menu-item">Book Appointment</a></li>
+                        <li><a href="patient-invoice.html" class="sub-menu-item">Invoice</a></li>
+                    </ul>
+                </li>
 
+                <li class="has-submenu parent-menu-item">
+                    <a href="javascript:void(0)">Pharmacy</a><span class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li><a href="pharmacy.html" class="sub-menu-item">Pharmacy</a></li>
+                        <li><a href="pharmacy-shop.html" class="sub-menu-item">Shop</a></li>
+                        <li><a href="pharmacy-product-detail.html" class="sub-menu-item">Medicine Detail</a></li>
+                        <li><a href="pharmacy-shop-cart.html" class="sub-menu-item">Shop Cart</a></li>
+                        <li><a href="pharmacy-checkout.html" class="sub-menu-item">Checkout</a></li>
+                        <li><a href="pharmacy-account.html" class="sub-menu-item">Account</a></li>
+                    </ul>
+                </li>
 
-
-
-                <li><a href="" class="btn btn-primary"
-                       target="_blank">Book Appointment</a></li>
+                <li class="has-submenu parent-parent-menu-item"><a href="javascript:void(0)">Pages</a><span
+                        class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li><a href="aboutus.html" class="sub-menu-item"> About Us</a></li>
+                        <li><a href="departments.html" class="sub-menu-item">Departments</a></li>
+                        <li><a href="faqs.html" class="sub-menu-item">FAQs</a></li>
+                        <li class="has-submenu parent-menu-item">
+                            <a href="javascript:void(0)" class="menu-item"> Blogs </a><span
+                                class="submenu-arrow"></span>
+                            <ul class="submenu">
+                                <li><a href="blogs.html" class="sub-menu-item">Blogs</a></li>
+                                <li><a href="blog-detail.html" class="sub-menu-item">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="terms.html" class="sub-menu-item">Terms & Policy</a></li>
+                        <li><a href="privacy.html" class="sub-menu-item">Privacy Policy</a></li>
+                        <li><a href="error.html" class="sub-menu-item">404 !</a></li>
+                        <li><a href="contact.html" class="sub-menu-item">Contact</a></li>
+                    </ul>
+                </li>
+                <li><a href="../admin//" class="sub-menu-item" target="_blank">Admin</a></li>
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
     </div><!--end container-->
 </header><!--end header-->
 <!-- Navbar End -->
 
+
 @yield('content')
 
-<!-- Start -->
+
 <footer class="">
     <div class="container">
         <div class="row">
@@ -276,7 +336,6 @@
         </div>
     </div><!--end container-->
 </footer><!--end footer-->
-<!-- End -->
 
 <!-- Back to top -->
 <a href="#" onclick="topFunction()" id="back-to-top"
@@ -312,13 +371,98 @@
 <!-- Offcanvas Start -->
 <div class="offcanvas offcanvas-end shadow border-0" tabindex="-1" id="offcanvasRight"
      aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header p-4 border-bottom">
+        <h5 id="offcanvasRightLabel" class="mb-0">
+            <img src="/assets/images/logo-dark.png" height="22" class="light-version" alt="">
+            <img src="/assets/images/logo-light.png" height="22" class="dark-version" alt="">
+        </h5>
+        <button type="button" class="btn-close d-flex align-items-center text-dark" data-bs-dismiss="offcanvas"
+                aria-label="Close"><i class="uil uil-times fs-4"></i></button>
+    </div>
+    <div class="offcanvas-body p-4 px-md-5">
+        <div class="row">
+            <div class="col-12">
+                <!-- Style switcher -->
+                <div id="style-switcher">
+                    <div>
+                        <ul class="text-center style-switcher list-unstyled mb-0">
+                            <li class="d-grid"><a href="javascript:void(0)" class="rtl-version t-rtl-light"
+                                                  onclick="setTheme('style-rtl')"><img
+                                        src="/assets/images/layouts/landing-light-rtl.png"
+                                        class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;"
+                                        alt=""><span class="text-dark fw-medium mt-3 d-block">RTL Version</span></a>
+                            </li>
+                            <li class="d-grid"><a href="javascript:void(0)" class="ltr-version t-ltr-light"
+                                                  onclick="setTheme('style')"><img
+                                        src="/assets/images/layouts/landing-light.png"
+                                        class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;"
+                                        alt=""><span class="text-dark fw-medium mt-3 d-block">LTR Version</span></a>
+                            </li>
+                            <li class="d-grid"><a href="javascript:void(0)" class="dark-rtl-version t-rtl-dark"
+                                                  onclick="setTheme('style-dark-rtl')"><img
+                                        src="/assets/images/layouts/landing-dark-rtl.png"
+                                        class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;"
+                                        alt=""><span class="text-dark fw-medium mt-3 d-block">RTL Version</span></a>
+                            </li>
+                            <li class="d-grid"><a href="javascript:void(0)" class="dark-ltr-version t-ltr-dark"
+                                                  onclick="setTheme('style-dark')"><img
+                                        src="/assets/images/layouts/landing-dark.png"
+                                        class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;"
+                                        alt=""><span class="text-dark fw-medium mt-3 d-block">LTR Version</span></a>
+                            </li>
+                            <li class="d-grid"><a href="javascript:void(0)" class="dark-version t-dark mt-4"
+                                                  onclick="setTheme('style-dark')"><img
+                                        src="/assets/images/layouts/landing-dark.png"
+                                        class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;"
+                                        alt=""><span class="text-dark fw-medium mt-3 d-block">Dark Version</span></a>
+                            </li>
+                            <li class="d-grid"><a href="javascript:void(0)" class="light-version t-light mt-4"
+                                                  onclick="setTheme('style')"><img
+                                        src="/assets/images/layouts/landing-light.png"
+                                        class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;"
+                                        alt=""><span class="text-dark fw-medium mt-3 d-block">Light Version</span></a>
+                            </li>
+                            <li class="d-grid"><a href="https://shreethemes.in/doctris/layouts/admin//"
+                                                  target="_blank" class="mt-4"><img
+                                        src="/assets/images/layouts/light-dash.png"
+                                        class="img-fluid rounded-md shadow-md d-block mx-auto" style="width: 240px;"
+                                        alt=""><span class="text-dark fw-medium mt-3 d-block">Admin Dashboard</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end Style switcher -->
+            </div><!--end col-->
+        </div><!--end row-->
+    </div>
 
-
-
-
+    <div class="offcanvas-footer p-4 border-top text-center">
+        <ul class="list-unstyled social-icon social mb-0">
+            <li class="list-inline-item mb-0"><a href="https://1.envato.market/doctris-template" target="_blank"
+                                                 class="rounded"><i class="uil uil-shopping-cart align-middle"
+                                                                    title="Buy Now"></i></a></li>
+            <li class="list-inline-item mb-0"><a href="https://dribbble.com/shreethemes" target="_blank"
+                                                 class="rounded"><i class="uil uil-dribbble align-middle"
+                                                                    title="dribbble"></i></a></li>
+            <li class="list-inline-item mb-0"><a href="https://www.behance.net/shreethemes" target="_blank"
+                                                 class="rounded"><i class="uil uil-behance align-middle"
+                                                                    title="behance"></i></a></li>
+            <li class="list-inline-item mb-0"><a href="https://www.facebook.com/shreethemes" target="_blank"
+                                                 class="rounded"><i class="uil uil-facebook-f align-middle"
+                                                                    title="facebook"></i></a></li>
+            <li class="list-inline-item mb-0"><a href="https://www.instagram.com/shreethemes/" target="_blank"
+                                                 class="rounded"><i class="uil uil-instagram align-middle"
+                                                                    title="instagram"></i></a></li>
+            <li class="list-inline-item mb-0"><a href="https://twitter.com/shreethemes" target="_blank" class="rounded"><i
+                        class="uil uil-twitter align-middle" title="twitter"></i></a></li>
+            <li class="list-inline-item mb-0"><a href="mailto:support@shreethemes.in" class="rounded"><i
+                        class="uil uil-envelope align-middle" title="email"></i></a></li>
+            <li class="list-inline-item mb-0"><a href="https://shreethemes.in" target="_blank" class="rounded"><i
+                        class="uil uil-globe align-middle" title="website"></i></a></li>
+        </ul><!--end icon-->
+    </div>
 </div>
 <!-- Offcanvas End -->
-
 
 <!-- Javascript -->
 <script src="/assets/libs/tiny-slider/min/tiny-slider.js"></script>
@@ -328,6 +472,7 @@
 <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/js/plugins.init.js"></script>
 <script src="/assets/js/app.js"></script>
+
 </body>
 
 </html>
