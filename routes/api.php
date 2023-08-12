@@ -3,7 +3,7 @@
 
 use App\Http\Controllers\Api\V1\Admin\UsersApiController;
 
-Route::post('/auth/login', [UsersApiController::class, 'loginUser']);
+Route::post('/admin/login', [UsersApiController::class, 'loginUser']);
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Users
