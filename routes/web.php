@@ -4,6 +4,7 @@
 
 //Web Api Routes
 
+use App\Http\Controllers\ApplicantActivityController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PublicApiController;
 
@@ -12,7 +13,13 @@ use App\Http\Controllers\PublicApiController;
 Route::get('/', [Controller::class, 'home'])->name('home');
 Route::get('/patient/registration', [Controller::class, 'registration'])->name('patient.registration');
 
-Route::group(['prefix' => 'web-api'], function () {
+Route::group(['prefix' => 'applicant', 'as' => 'applicant.', 'middleware' => 'applicant'], function () {
+    Route::get('/profile', [ApplicantActivityController::class, 'profile'])->name('profile');
+
+});
+
+
+    Route::group(['prefix' => 'web-api'], function () {
 
     Route::any('/otp-sent', [PublicApiController::class, 'otpSent'])->name('otp-sent');
     Route::any('/otp-verify', [PublicApiController::class, 'otpVerify'])->name('otp-verify');

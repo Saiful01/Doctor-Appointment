@@ -66,10 +66,10 @@
 
                                             <div class="col-md-12">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Your Email <span
-                                                            class="text-danger">*</span></label>
+                                                    <label class="form-label">Your Email {{--<span
+                                                            class="text-danger">*</span>--}}</label>
                                                     <input type="email" class="form-control" placeholder="Email"
-                                                           name="email" ng-model="email" required="">
+                                                           name="email" ng-model="email" >
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -78,7 +78,7 @@
                                                             class="text-danger">*</span></label>
                                                     <select
                                                         class="form-control {{ $errors->has('blood_group') ? 'is-invalid' : '' }}"
-                                                        name="blood_group" id="blood_group" required>
+                                                        name="blood_group" ng-model="blood_group" id="blood_group" required>
                                                         <option value
                                                                 disabled {{ old('blood_group', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                                         @foreach(App\Models\Applicant::BLOOD_GROUP_SELECT as $key => $label)
@@ -96,7 +96,7 @@
                                                         <div
                                                             class="form-check form-check-inline {{ $errors->has('gender') ? 'is-invalid' : '' }}">
                                                             <input class="form-check-input" type="radio"
-                                                                   id="gender_{{ $key }}" name="gender"
+                                                                   id="gender_{{ $key }}" name="gender" ng-model="gender"
                                                                    value="{{ $key }}"
                                                                    {{ old('gender', '') === (string) $key ? 'checked' : '' }} required>
                                                             <label class="form-check-label form-check-inline"
@@ -112,7 +112,7 @@
                                                             class="text-danger">*</span></label>
                                                     <select
                                                         class="form-control select2 {{ $errors->has('division') ? 'is-invalid' : '' }}"
-                                                        name="division_id" id="division_id">
+                                                        name="division_id" ng-model="division_id" id="division_id">
                                                         @foreach($divisions as $id => $entry)
                                                             <option
                                                                 value="{{ $id }}" {{ old('division_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
@@ -126,7 +126,7 @@
                                                             class="text-danger">*</span></label>
                                                     <select
                                                         class="form-control select2 {{ $errors->has('district') ? 'is-invalid' : '' }}"
-                                                        name="district_id" id="district_id">
+                                                        name="district_id" ng-model="district_id" id="district_id">
                                                         @foreach($districts as $id => $entry)
                                                             <option
                                                                 value="{{ $id }}" {{ old('district_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
@@ -140,7 +140,7 @@
                                                             class="text-danger">*</span></label>
                                                     <select
                                                         class="form-control select2 {{ $errors->has('upazila') ? 'is-invalid' : '' }}"
-                                                        name="upazila_id" id="upazila_id">
+                                                        name="upazila_id" ng-model="upazila_id" id="upazila_id">
                                                         @foreach($upazilas as $id => $entry)
                                                             <option
                                                                 value="{{ $id }}" {{ old('upazila_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
@@ -152,7 +152,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Address<span
                                                             class="text-danger">*</span></label>
-                                                    <textarea class="form-control " name="address"
+                                                    <textarea class="form-control " name="address" ng-model="address"
                                                               id="address">{{ old('address') }}</textarea>
 
                                                 </div>
@@ -177,8 +177,8 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Password <span
                                                             class="text-danger">*</span></label>
-                                                    <input type="password" class="form-control" placeholder="Password"
-                                                           required="">
+                                                    <input type="password" ng-model="password" class="form-control" placeholder="Password"
+                                                           >
                                                 </div>
                                             </div>
                                             <div class="col-md-12">

@@ -37,7 +37,7 @@ class PublicApiController extends Controller
 
                 return [
 
-                    'code' => 201,
+                    'code' => 400,
                     'message' => "You have register Account for this Phone Number, Please login your account",
                     'data' => $request->all(),
 
@@ -141,10 +141,11 @@ class PublicApiController extends Controller
     public function registrationSave(Request $request)
     {
 
-        //return $request->all();
+       // return $request->all();
 
         $request['password'] = Hash::make($request['password']);
-        $request['is_active'] = true;
+        $createdAt = Carbon::parse($request['dob']);
+        $request['dob']= $createdAt->format('d-m-y');
         try {
             $applicant = Applicant::create($request->all());
             Auth::guard('applicant')->loginUsingId($applicant->id);

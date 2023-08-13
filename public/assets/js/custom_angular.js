@@ -31,7 +31,7 @@ app.controller('appointmentController', function ($scope, $http, $location) {
       /*  document.getElementById("loader").style.display = "block";*/
         $http.post(url, params).then(function success(response) {
 
-            console.log(response.data)
+           // console.log(response.data)
 
             if (response.data.code == 200) {
                 messageSuccess(response.data.message)
@@ -43,7 +43,8 @@ app.controller('appointmentController', function ($scope, $http, $location) {
                 document.getElementById("loader").style.display = "none";
 
             } else {
-                document.getElementById("loader").style.display = "none";
+
+               /* document.getElementById("loader").style.display = "none";*/
 
                 messageError(response.data.message)
                 if (response.data.message == "You have an active OTP") {
@@ -179,6 +180,9 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             'blood_group': $scope.blood_group,
             'age': $scope.age,
             'dob': $scope.dob,
+            'division_id': $scope.division_id,
+            'district_id': $scope.district_id,
+            'upazila_id': $scope.upazila_id,
             'address': $scope.address,
             'password': $scope.password,
         };
