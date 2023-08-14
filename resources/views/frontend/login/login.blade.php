@@ -1,98 +1,77 @@
-@extends("layouts.frontend")
-@section('title', 'Challenge.gov.bd Create Account')
+@extends("layouts.details")
+@section('title', 'Sign-Up')
 @section("content")
-<style>
-    .submission_banner{
-        min-height: 150px;
-        background: rgb(0,102,49);
-        background: radial-gradient(circle, rgba(0,102,49,1) 24%, rgba(0,153,20,1) 67%, rgba(0,149,10,1) 98%);
-    }
-    .challenge__header img {
-        height: 120px !important;
-        padding: 20px !important;
-    }
-</style>
-<div class="header">
-    <div class="submission_banner d-flex align-items-center justify-content-center">
-        <h2 class="animated bounceInRight p-2 text-white text-center text-bold">{{trans('frontend.account_login')}}</h2>
-    </div>
-</div>
-    <div class="container padding-y">
-        <form action="/applicant/login" method="post">
-            @csrf
-            <input type="hidden" name="previous_route" value="{{url()->previous()}}">
-            <div class="row" id="explore-challenges">
-                <div class="col-md-6 col-12 mt-3 mx-auto"  data-aos="zoom-in" data-aos-duration="1000">
-                    <div class=" p-5 shadow-lg radius-md">
-                        <div class="col-sm-12 mx-t3 mb-4 ">
-                            <img class=text-center" src="/logo2.png" >
-                            <h5 class="text-success">{{trans('frontend.account_login')}}</h5>
-                        </div>
 
-                        <div class="col-sm-12 form-group">
-                            <label for="name-f">{{trans('frontend.your_phone')}} </label>
-                            <input type="text" class="form-control" name="phone"
-                                placeholder="{{trans('frontend.your_phone')}} " value="{{old('phone')}}" required>
-                        </div>
-                        <div class="col-sm-12 form-group">
-                            <label for="name-f">{{trans('frontend.password')}}</label>
-                            <input type="password" class="form-control" name="password"
-                                placeholder="{{trans('frontend.enter_password')}}" value="{{old('password')}}" required>
-                        </div>
-                        <div class="col-sm-12 form-group mb-0 mt-2 ">
-                            <a href="/applicant/forgot-password" class="text-success "> {{trans('frontend.forgot_password')}}</a>
-                        </div>
-                        <br>
-                        <div class="col-sm-12 form-group mb-0 mt-2 ">
-                            <button class="btn btn-success " type="submit">{{trans('frontend.login')}}
-                            </button>
-                        </div>
-                        <div class="col-sm-12 form-group mb-0 mt-5 ">
-                            <p>Don't have an account? Please <a href="/applicant/registration" style=" text-decoration:underline !important" class=" text-underline text-success">Register
-                            </a> Your Account</p>
-                        </div>
-                    </div>
-                </div>
-                @if(isset($challenge))
-                <div class="col-md-6 col-12 mt-3 mx-auto d-flex align-content-center"  data-aos="flip-left" data-aos-duration="1000" >
-                    <div class="card border-0 shadow-lg challenge-card ">
-                        <div class="card-header challenge__header">
-                            @if($challenge->logo)
-                                <a href="{{ $challenge->logo->getUrl() }}" target="_blank">
-                                    <img src="{{ $challenge->logo->getUrl()  }}" alt="power-explore">
-                                </a>
-                            @else
-                                <img src="/frontend-assets/images/banners/ch.jpeg" alt="power-explore">
-                            @endif
-                        </div>
+    <!-- Hero Start -->
+    <section class="bg-home d-flex bg-light align-items-center" style="background: url('../assets/images/bg/bg-lines-one.png') center;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-8">
+                    <img src="/assets/images/logo-dark.png" height="22" class="mx-auto d-block" alt="">
+                    <div class="card login-page shadow mt-4 rounded border-0">
                         <div class="card-body">
-                            <div class="card-content">
-                                <h2>{{$challenge->title}}</h2>
+                            <h4 class="text-center">Sign In</h4>
+                            <form action="/applicant/login" method="post" class="login-form mt-4">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Your Phone <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" placeholder="Phone" name="phone" required="">
+                                        </div>
+                                    </div>
 
-                                <p>{{detailsFormat($challenge->short_description)}}</p>
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Password <span class="text-danger">*</span></label>
+                                            <input type="password" class="form-control" placeholder="Password" required="">
+                                        </div>
+                                    </div>
 
+                                    <div class="col-lg-12">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="mb-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input align-middle" type="checkbox" value="" id="remember-check">
+                                                    <label class="form-check-label" for="remember-check">Remember me</label>
+                                                </div>
+                                            </div>
+                                            <a href="forgot-password.html" class="text-dark h6 mb-0">Forgot password ?</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-0">
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary">Sign in</button>
+                                        </div>
+                                    </div>
 
-                                <div class="cart-btn mt-5">
-                                    @if ($challenge->start_date >= Carbon\Carbon::now())
+                                    <div class="col-lg-12 mt-3 text-center">
+                                        <h6 class="text-muted">Or</h6>
+                                    </div><!--end col-->
 
-                                        <span class="btn btn-success btn-lg"> {{trans('frontend.coming_soon')}}</span>
-                                    @else
-                                    <p><a href="/challenge-details/{{$challenge->slug}}" style=" text-decoration:underline !important" class=" text-underline text-success">Click here
-                                    </a> for details about the project Your Account</p>
-                                    @endif
+                                    <div class="col-6 mt-3">
+                                        <div class="d-grid">
+                                            <a href="#" class="btn btn-soft-primary"><i class="uil uil-facebook"></i> Facebook</a>
+                                        </div>
+                                    </div><!--end col-->
 
+                                    <div class="col-6 mt-3">
+                                        <div class="d-grid">
+                                            <a href="#" class="btn btn-soft-primary"><i class="uil uil-google"></i> Google</a>
+                                        </div>
+                                    </div><!--end col-->
+
+                                    <div class="col-12 text-center">
+                                        <p class="mb-0 mt-3"><small class="text-dark me-2">Don't have an account ?</small> <a href="/patient/registration" class="text-dark fw-bold">Sign Up</a></p>
+                                    </div>
                                 </div>
-                            </div>
-
+                            </form>
                         </div>
-
-
-                    </div>
-
-                </div>
-                @endif
-            </div>
-        </form>
-    </div>
+                    </div><!---->
+                </div> <!--end col-->
+            </div><!--end row-->
+        </div> <!--end container-->
+    </section><!--end section-->
+    <!-- Hero End -->
 
 @endsection

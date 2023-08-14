@@ -12,6 +12,9 @@ use App\Http\Controllers\PublicApiController;
 
 Route::get('/', [Controller::class, 'home'])->name('home');
 Route::get('/patient/registration', [Controller::class, 'registration'])->name('patient.registration');
+Route::get('/patient/login', [Controller::class, 'login'])->name('patient.login');
+Route::any('/patient/forgot-password', [Controller::class, 'forgotPassword'])->name('patient.forgot.password');
+
 
 Route::group(['prefix' => 'applicant', 'as' => 'applicant.', 'middleware' => 'applicant'], function () {
     Route::get('/profile', [ApplicantActivityController::class, 'profile'])->name('profile');
