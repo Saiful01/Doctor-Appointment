@@ -11,7 +11,7 @@
                     <div class="card login-page shadow mt-4 rounded border-0">
                         <div class="card-body">
                             <h4 class="text-center">Sign In</h4>
-                            <form action="/applicant/login" method="post" class="login-form mt-4">
+                            <form action="/patient/login" method="post" class="login-form mt-4">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
