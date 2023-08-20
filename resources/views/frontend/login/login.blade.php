@@ -24,7 +24,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label class="form-label">Password <span class="text-danger">*</span></label>
-                                            <input type="password" class="form-control" placeholder="Password" required="">
+                                            <input type="password" name="password" class="form-control" placeholder="Password" required="">
                                         </div>
                                     </div>
 
@@ -36,12 +36,12 @@
                                                     <label class="form-check-label" for="remember-check">Remember me</label>
                                                 </div>
                                             </div>
-                                            <a href="forgot-password.html" class="text-dark h6 mb-0">Forgot password ?</a>
+                                            <a href="/patient/forgot-password" class="text-dark h6 mb-0">Forgot password ?</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 mb-0">
                                         <div class="d-grid">
-                                            <button class="btn btn-primary">Sign in</button>
+                                            <button type="submit" class="btn btn-primary">Sign in</button>
                                         </div>
                                     </div>
 

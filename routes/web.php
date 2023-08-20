@@ -18,6 +18,7 @@ Route::any('/patient/forgot-password', [Controller::class, 'forgotPassword'])->n
 
 Route::group(['prefix' => 'applicant', 'as' => 'applicant.', 'middleware' => 'applicant'], function () {
     Route::get('/profile', [ApplicantActivityController::class, 'profile'])->name('profile');
+    Route::get('/logout', [ApplicantActivityController::class, 'logout'])->name('logout');
 
 });
 

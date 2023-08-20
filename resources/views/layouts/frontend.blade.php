@@ -92,6 +92,7 @@
                     <i data-feather="search" class="fea icon-sm text-foot align-middle"></i>
                 </a>
             </li>
+            @if(Auth::guard('applicant')->check())
 
             <li class="list-inline-item mb-0 ms-1">
                 <div class="dropdown dropdown-primary">
@@ -105,22 +106,30 @@
                             <img src="/assets/images/doctors/01.jpg"
                                  class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                             <div class="flex-1 ms-2">
-                                <span class="d-block mb-1">Calvin Carlo</span>
-                                <small class="text-muted">Orthopedic</small>
+                                <span class="d-block mb-1">{{Auth::guard('applicant')->user()->name}}</span>
+                               {{-- <small class="text-muted">Orthopedic</small>--}}
                             </div>
                         </a>
-                        <a class="dropdown-item text-dark" href="doctor-dashboard.html"><span
+                        <a class="dropdown-item text-dark" href="/applicant/profile"><span
                                 class="mb-0 d-inline-block me-1"><i
                                     class="uil uil-dashboard align-middle h6"></i></span> Dashboard</a>
                         <a class="dropdown-item text-dark" href="doctor-profile-setting.html"><span
                                 class="mb-0 d-inline-block me-1"><i class="uil uil-setting align-middle h6"></i></span>
                             Profile Settings</a>
                         <div class="dropdown-divider border-top"></div>
-                        <a class="dropdown-item text-dark" href="login.html"><span class="mb-0 d-inline-block me-1"><i
+                        <a class="dropdown-item text-dark" href="/applicant/logout"><span class="mb-0 d-inline-block me-1"><i
                                     class="uil uil-sign-out-alt align-middle h6"></i></span> Logout</a>
                     </div>
                 </div>
             </li>
+            @else
+                <li class="list-inline-item mb-0 ms-1">
+                    <a href="/patient/login" class="btn btn-icon btn-pills btn-primary" data-bs-toggle="offcanvas"
+                       data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                        Login
+                    </a>
+                </li>
+            @endif
         </ul>
         <!-- Start Dropdown -->
 

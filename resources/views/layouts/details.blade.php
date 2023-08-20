@@ -41,6 +41,7 @@
 
 
 <body ng-app="myApp" ng-controller="appointmentController">
+@include('sweetalert::alert')
 <!-- Loader -->
 <!-- <div id="preloader">
     <div id="status">

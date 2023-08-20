@@ -46,6 +46,7 @@ class Controller extends BaseController
     public
     function login(Request $request)
     {
+       // return $request->all();
         if (Auth::guard('applicant')->check()) {
             return redirect()->route('applicant.profile');
         }
