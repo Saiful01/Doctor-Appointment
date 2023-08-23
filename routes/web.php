@@ -195,3 +195,13 @@ Route::get('/create-storage-link', function () {
     return 'Storage link created successfully.';
 });
 
+Route::get('/clear-cache', function () {
+    Artisan::call('optimize');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+
+    return "Cache cleared successfully";
+});
+
