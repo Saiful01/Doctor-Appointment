@@ -3,7 +3,7 @@
 @section("content")
 
     <!-- Hero Start -->
-    <section class="bg-home d-flex bg-light align-items-center" style="background: url('../assets/images/bg/bg-lines-one.png') center;">
+    <section class="bg-home d-flex bg-light align-items-center" style="background: url('../assets/images/bg/bg-lines-one.png') center; margin-top: 100px">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-8">
@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-12 mt-3 text-center">
+                           {{--         <div class="col-lg-12 mt-3 text-center">
                                         <h6 class="text-muted">Or</h6>
                                     </div><!--end col-->
 
@@ -59,7 +59,7 @@
                                         <div class="d-grid">
                                             <a href="#" class="btn btn-soft-primary"><i class="uil uil-google"></i> Google</a>
                                         </div>
-                                    </div><!--end col-->
+                                    </div><!--end col-->--}}
 
                                     <div class="col-12 text-center">
                                         <p class="mb-0 mt-3"><small class="text-dark me-2">Don't have an account ?</small> <a href="/patient/registration" class="text-dark fw-bold">Sign Up</a></p>

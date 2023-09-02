@@ -7,6 +7,7 @@ use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
 use App\Http\Resources\Admin\AppointmentResource;
 use App\Models\Appointment;
+use App\Models\DoctorSerial;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,9 +21,11 @@ class AppointmentApiController extends Controller
         return new AppointmentResource(Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->get());
     }
 
-    public function store(StoreAppointmentRequest $request)
+    public function store(Request $request)
     {
         $appointment = Appointment::create($request->all());
+
+        DoctorSerial::where('id', $request['serial_id'])->update(['is_book'=> true]);
 
         return (new AppointmentResource($appointment))
             ->response()

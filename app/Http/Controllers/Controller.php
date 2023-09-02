@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Applicant;
 use App\Models\District;
 use App\Models\Division;
+use App\Models\DoctorSerial;
 use App\Models\Upazila;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -23,6 +24,13 @@ class Controller extends BaseController
     public function home()
     {
         return view('frontend.home.index');
+    }
+    public function appointment()
+    {
+
+         $hospital1= DoctorSerial::with('hospital')->where('hospital_id', 1.)->get();
+         $hospital2= DoctorSerial::with('hospital')->where('hospital_id', 2)->get();
+         return view('frontend.appointment.index',compact('hospital1','hospital2'));
     }
 
     public function registration()

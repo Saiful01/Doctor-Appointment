@@ -14,6 +14,7 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 Route::get('/patient/registration', [Controller::class, 'registration'])->name('patient.registration');
 Route::any('/patient/login', [Controller::class, 'login'])->name('patient.login');
 Route::any('/patient/forgot-password', [Controller::class, 'forgotPassword'])->name('patient.forgot.password');
+Route::any('/patient/appointment', [Controller::class, 'appointment'])->name('patient.appointment');
 
 
 Route::group(['prefix' => 'applicant', 'as' => 'applicant.', 'middleware' => 'applicant'], function () {

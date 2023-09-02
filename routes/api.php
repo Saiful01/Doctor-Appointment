@@ -1,9 +1,20 @@
 <?php
 
 
+use App\Http\Controllers\Api\V1\Admin\ApplicantApiController;
+use App\Http\Controllers\Api\V1\Admin\DistrictApiController;
+use App\Http\Controllers\Api\V1\Admin\DivisionApiController;
+use App\Http\Controllers\Api\V1\Admin\UpazilaApiController;
 use App\Http\Controllers\Api\V1\Admin\UsersApiController;
 
 Route::post('/admin/login', [UsersApiController::class, 'loginUser']);
+Route::post('/applicant/login', [ApplicantApiController::class, 'patientLogin']);
+Route::post('/applicant/registration', [ApplicantApiController::class, 'registrationSave']);
+Route::post('/applicant/registration-otp/send', [ApplicantApiController::class, 'otpSent']);
+Route::post('/applicant/otp/verify', [ApplicantApiController::class, 'otpVerify']);
+Route::get('/divisions', [DivisionApiController::class, 'index']);
+Route::get('/districts', [DistrictApiController::class, 'index']);
+Route::get('/upazilas', [UpazilaApiController::class, 'index']);
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Users
@@ -78,4 +89,12 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Video
     Route::apiResource('videos', 'VideoApiController');
+
+
+   /* Applicant Api*/
+
+
 });
+
+
+

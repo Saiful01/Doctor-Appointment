@@ -3,6 +3,7 @@ app.controller('appointmentController', function ($scope, $http, $location) {
 
     var intervalId;
 
+
     $scope.sendOtp = function () {
 
 
@@ -254,6 +255,31 @@ app.controller('appointmentController', function ($scope, $http, $location) {
         });
 
     }
+
+
+
+
+    $scope.selectedButton = null;
+    $scope.selectedTitle = ''; // Initialize the selectedTitle variable
+
+    $scope.serialCheck = function(book, title) {
+        if (book == 1) {
+            messageError('This Serial is Booked, Please Select Blue Color Serial For Booking');
+        } else {
+            // Remove btn-success class from all buttons
+            angular.element(document.querySelectorAll('.btn-success')).removeClass('btn-success');
+            // Add btn-success class to the clicked button
+            angular.element(event.target).addClass('btn-success');
+            // Set the selected button title
+            $scope.selectedButton = title;
+            // Update the input field with the selected title
+            $scope.selectedTitle = title;
+        }
+    };
+
+
+
+
 
 
     function messageError(message) {

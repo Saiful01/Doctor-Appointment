@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
-function NrandvalidatePhoneNumber($phone)
+function validatePhoneNumber($phone)
 {
     if ($phone == null) {
         return 0;

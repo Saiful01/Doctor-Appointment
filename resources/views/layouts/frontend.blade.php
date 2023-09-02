@@ -124,10 +124,26 @@
             </li>
             @else
                 <li class="list-inline-item mb-0 ms-1">
-                    <a href="/patient/login" class="btn btn-icon btn-pills btn-primary" data-bs-toggle="offcanvas"
-                       data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                        Login
-                    </a>
+                    <div class="dropdown dropdown-primary">
+                        <button type="button" class="btn btn-icon btn-pills btn-primary"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ri-user-line"></i>
+                        </button>
+                        <div class="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3"
+                             style="min-width: 200px;">
+                            <a class="dropdown-item d-flex align-items-center text-dark" href="/patient/login">
+                             <div class="flex-1 ms-2">
+                                    <span class="d-block mb-1">Login</span>
+
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center text-dark" href="/patient/registration">
+                             <div class="flex-1 ms-2">
+                                    <span class="d-block mb-1">Register</span>
+
+                                </div>
+                            </a>
+                     </div>
+                    </div>
                 </li>
             @endif
         </ul>

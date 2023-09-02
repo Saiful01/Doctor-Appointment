@@ -9,10 +9,10 @@ use Illuminate\Http\Response;
 
 class StoreAppointmentRequest extends FormRequest
 {
-    public function authorize()
+    /*public function authorize()
     {
         return Gate::allows('appointment_create');
-    }
+    }*/
 
     public function rules()
     {
