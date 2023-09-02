@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Applicant;
+use App\Models\Designation;
 use App\Models\Hospital;
+use App\Models\Specialist;
 use App\Models\Status;
 use App\Models\WeeklyDay;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -87,12 +89,55 @@ class AllSeeder extends Seeder
 
             [
                 'id' => 2,
-                'title' => 'Farazi Hospital',
+                'title' => 'Farazy Hospital',
 
             ],
         ];
 
         Hospital::insert($hospital);
+
+        $designation = [
+            [
+                'id' => 1,
+                'title' => 'Hepatobiliary and Pancreatic Surgeon',
+
+
+            ],
+
+
+        ];
+
+        Designation::insert($designation);
+
+        $specialist = [
+            [
+                'id' => 1,
+                'title' => 'Liver Surgery',
+
+
+            ],
+            [
+                'id' => 2,
+                'title' => 'Gall Bladder Surgery',
+
+            ],
+            [
+                'id' => 3,
+                'title' => 'Pancreatic Surgery',
+
+            ], [
+                'id' => 4,
+                'title' => 'Laparoscopic surgery',
+
+            ], [
+                'id' => 5,
+                'title' => 'General Surgery',
+
+            ],
+
+        ];
+
+        Specialist::insert($specialist);
 
 
         $status = [

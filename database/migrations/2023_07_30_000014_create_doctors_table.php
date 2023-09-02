@@ -13,7 +13,6 @@ class CreateDoctorsTable extends Migration
             $table->string('name');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->string('designation');
             $table->string('gender');
             $table->string('address')->nullable();
             $table->longText('short_details')->nullable();

@@ -190,3 +190,19 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
+
+Route::get('/create-storage-link', function () {
+    Artisan::call('storage:link');
+    return 'Storage link created successfully.';
+});
+
+Route::get('/clear-cache', function () {
+    Artisan::call('optimize');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+
+    return "Cache cleared successfully";
+});
+
