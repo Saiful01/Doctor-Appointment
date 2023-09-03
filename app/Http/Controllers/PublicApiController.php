@@ -56,14 +56,14 @@ class PublicApiController extends Controller
             ];
         }*/
 
-        $otp = getOtp();
+        $otp = rand(1000, 9999);
         $is_exist = Otp::where('phone', $phone)->where('is_used', false)->orderBy('created_at', 'DESC')->first();
         if ($is_exist) {
             if (Carbon::parse($is_exist->created_at)
-                    ->addSeconds(getExpireLimit()) >= \Carbon\Carbon::now()) {
+                    ->addSeconds(120) >= \Carbon\Carbon::now()) {
                 $message = "You have an active OTP";
                 $code = 201;
-                $expire_time = Carbon::parse($is_exist->created_at)->addSeconds(getExpireLimit());
+                $expire_time = Carbon::parse($is_exist->created_at)->addSeconds(120);
                 $time_expire = $expire_time->diffInSeconds(\Carbon\Carbon::now());
 
                 return [
@@ -80,7 +80,13 @@ class PublicApiController extends Controller
                     'otp' => $otp,
                 ]);
                 $sms = "Your Dr Mustafiz Appointment verification code is " . $otp;
-                $sms_status = sendSms($phone, $sms);
+                /*$sms_status = sendSms($phone, $sms);*/
+                return [
+                    'code' => $code,
+                    'message' => $message,
+                    'data' => $request->all(),
+                    'otp' => $otp,
+                ];
 
             }
         } else {
@@ -88,7 +94,7 @@ class PublicApiController extends Controller
             $message = "Check your inbox for OTP";
 
             $sms = "Your Dr Mustafiz Appointment verification code is " . $otp;
-            $sms_status = sendSms($phone, $sms);
+            /*$sms_status = sendSms($phone, $sms);*/
             Otp::create([
                 'phone' => $phone,
                 'otp' => $otp,
@@ -119,7 +125,7 @@ class PublicApiController extends Controller
         } else {
 
             if (\Carbon\Carbon::parse($is_exist->created_at)
-                    ->addSeconds(getExpireLimit()) < \Carbon\Carbon::now()) {
+                    ->addSeconds(120) < \Carbon\Carbon::now()) {
 
                 return [
                     'code' => 400,
@@ -182,5 +188,18 @@ class PublicApiController extends Controller
             ];
         }
 
+    }
+    function validatePhoneNumber($phone)
+    {
+        if ($phone == null) {
+            return 0;
+        }
+        if (substr($phone, 0, 1) != '0') {
+            $phone = "0" . $phone;
+        }
+        $pattern = "/^(?:\+88|01)?(?:\d{11}|\d{13})$/";
+        if (preg_match($pattern, $phone)) {
+            return 1;
+        }
     }
 }

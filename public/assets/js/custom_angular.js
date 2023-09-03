@@ -3,6 +3,8 @@ app.controller('appointmentController', function ($scope, $http, $location) {
 
     var intervalId;
 
+    document.getElementById("guest").style.display = "none";
+
 
     $scope.sendOtp = function () {
 
@@ -37,6 +39,7 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             if (response.data.code == 200) {
                 messageSuccess(response.data.message)
                 $scope.startCounter(120);
+                console.log(response.data.otp)
                 document.getElementById("phone-area").style.display = "none";
                 document.getElementById("otp-area").style.display = "block";
                 document.getElementById("timer").style.display = "block";
@@ -276,6 +279,17 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             $scope.selectedTitle = title;
         }
     };
+    $scope.applicantType = function(selectedValue) {
+        console.log(selectedValue);
+        if (selectedValue === "Self") {
+            console.log('self');
+            document.getElementById("guest").style.display = "none";
+        } else {
+            console.log('guest');
+            document.getElementById("guest").style.display = "block";
+        }
+    };
+
 
 
 
