@@ -136,6 +136,25 @@
                                 <form>
                                     @csrf
                                     <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Appoint Date</label>
+                                                <select class="form-select form-control"
+                                                        ng-model="appointment_date_type"
+                                                        ng-change="appointmentDateType(appointment_date_type)"
+                                                        name="appointment_date_type">
+                                                    <option value="today">Today</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="date-area">
+                                            <div class="mb-3">
+                                                <label class="form-label">Appoint Date</label>
+                                                <input class="form-control" type="date" name="appoint_date"
+                                                       ng-model="appoint_date">
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12">
                                             <input type="hidden" name="hospital_id" value="2">
                                             <input type="hidden" name="doctor_id" value="1">
@@ -143,7 +162,7 @@
                                                 <label class="form-label">Please Select Your Serial <span
                                                         class="text-danger">*</span></label> <br>
                                                 @foreach($hospital2 as $item)
-                                                    <span ng-click="serialCheck({{$item->is_book}}, '{{$item->id}}')"
+                                                    <span ng-click="serialCheck({{$item->is_book}}, '{{$item->id}}' , $event)"
                                                           ng-class="{'btn-primary': {{$item->is_book}} == 0, 'btn-danger': {{$item->is_book}} == 1, 'btn-success': {{$item->is_book}} == 0 && selectedButton == '{{$item->title}}'}"
                                                           class="btn mt-1">
                                                         {{$item->title}}
@@ -153,7 +172,7 @@
                                         </div>
 
 
-                                        <input type="hidden" name="serial_id" id="selectedTitleInput"
+                                        <input type="text" name="serial_id" id="selectedTitleInput"
                                                ng-model="selectedTitle" readonly>
 
 
@@ -172,57 +191,61 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Apply Type</label>
-                                                <select class="form-select form-control" ng-model="selectedApplicantType" ng-change="applicantType(selectedApplicantType)" name="applicant_type">
-                                                    <option value="Self">Self</option>
+                                                <select class="form-select form-control"
+                                                        ng-model="selectedApplicantType"
+                                                        ng-change="applicantType(selectedApplicantType)"
+                                                        name="applicant_type">
+                                                    <option value="Self" selected>Self</option>
                                                     <option value="Other">Other</option>
                                                 </select>
                                             </div>
                                         </div>
+                                    </div><!--end row-->
 
-                                        <div class="row" id="guest">
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Patient Name <span
-                                                            class="text-danger">*</span></label>
-                                                    <input name="name"  type="text" class="form-control"
-                                                           placeholder="Patient Name :">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Patient Phone <span
-                                                            class="text-danger">*</span></label>
-                                                    <input name="phone"  type="text" class="form-control"
-                                                           placeholder="Patient Phone :">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">DOB <span
-                                                            class="text-danger">*</span></label>
-                                                    <input name="dob"  type="date" class="form-control"
-                                                           placeholder="Patient Date Of Birth :">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Address <span
-                                                            class="text-danger">*</span></label>
-                                                    <input name="address"  type="text" class="form-control"
-                                                           placeholder="Patient Address :">
-                                                </div>
+                                    <div class="row" id="guest">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Patient Name <span
+                                                        class="text-danger">*</span></label>
+                                                <input name="name" type="text" class="form-control"
+                                                       placeholder="Patient Name :">
                                             </div>
                                         </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary">Book An Appointment
-                                                </button>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Patient Phone <span
+                                                        class="text-danger">*</span></label>
+                                                <input name="phone" type="text" class="form-control"
+                                                       placeholder="Patient Phone :">
                                             </div>
-                                        </div><!--end col-->
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">DOB <span
+                                                        class="text-danger">*</span></label>
+                                                <input name="dob" type="date" class="form-control"
+                                                       placeholder="Patient Date Of Birth :">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Address <span
+                                                        class="text-danger">*</span></label>
+                                                <input name="address" type="text" class="form-control"
+                                                       placeholder="Patient Address :">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="d-grid">
+                                            <button ng-click="appointmentStore()" class="btn btn-primary">Book An
+                                                Appointment
+                                            </button>
+                                        </div>
+                                    </div><!--end col-->
 
 
-                                    </div><!--end row-->
                                 </form>
                             </div>
                         </div>

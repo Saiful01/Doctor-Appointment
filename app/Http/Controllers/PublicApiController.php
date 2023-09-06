@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applicant;
+use App\Models\Appointment;
 use App\Models\Otp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -187,6 +188,30 @@ class PublicApiController extends Controller
                 'message' => $e->getMessage(),
             ];
         }
+
+    }
+    public function serialBookingCheck(Request $request)
+    {
+
+        //return $request->all();
+        $exist= Appointment::where('serial_id', $request['serial_id'])->where('appoint_date' ,$request['appoint_date'])->first();
+
+        if ($exist){
+            return [
+                'code' => 400,
+                'message' => "This Serial Is Booked For this Days, Please Select Other Serial",
+            ];
+        }else{
+
+            return [
+                'code' => 200,
+                'message' => "Booking This Serial",
+            ];
+
+        }
+
+
+
 
     }
     function validatePhoneNumber($phone)

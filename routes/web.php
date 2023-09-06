@@ -30,6 +30,7 @@ Route::group(['prefix' => 'applicant', 'as' => 'applicant.', 'middleware' => 'ap
     Route::any('/otp-verify', [PublicApiController::class, 'otpVerify'])->name('otp-verify');
     Route::any('/registration/save', [PublicApiController::class, 'registrationSave'])->name('registration-save');
     Route::any('/reset-password', [PublicApiController::class, 'resetPassword'])->name('reset-password');
+    Route::any('/serial-booking-check', [PublicApiController::class, 'serialBookingCheck'])->name('serial.booking.check');
 
 });
 

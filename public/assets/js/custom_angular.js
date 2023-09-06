@@ -4,6 +4,7 @@ app.controller('appointmentController', function ($scope, $http, $location) {
     var intervalId;
 
     document.getElementById("guest").style.display = "none";
+    document.getElementById("date-area").style.display = "none";
 
 
     $scope.sendOtp = function () {
@@ -265,20 +266,51 @@ app.controller('appointmentController', function ($scope, $http, $location) {
     $scope.selectedButton = null;
     $scope.selectedTitle = ''; // Initialize the selectedTitle variable
 
-    $scope.serialCheck = function(book, title) {
+    $scope.serialCheck = function(book, title, event) {
         if (book == 1) {
             messageError('This Serial is Booked, Please Select Blue Color Serial For Booking');
         } else {
-            // Remove btn-success class from all buttons
-            angular.element(document.querySelectorAll('.btn-success')).removeClass('btn-success');
-            // Add btn-success class to the clicked button
-            angular.element(event.target).addClass('btn-success');
-            // Set the selected button title
-            $scope.selectedButton = title;
-            // Update the input field with the selected title
-            $scope.selectedTitle = title;
+            if ($scope.appoint_date) {
+                let url = "/web-api/serial-booking-check";
+                let params = {
+                    'serial_id': $scope.title,
+                    'appoint_date': $scope.appoint_date,
+                };
+
+                $http.post(url, params).then(function success(response) {
+                    if (response.data.code == 200) {
+                        console.log(response.data);
+                        console.log('Date Check');
+                        // Remove btn-success class from all buttons
+                        angular.element(document.querySelectorAll('.btn-success')).removeClass('btn-success');
+                        // Add btn-success class to the clicked button
+                        angular.element(event.target).addClass('btn-success');
+                        // Set the selected button title
+                        $scope.selectedButton = title;
+                        // Update the input field with the selected title
+                        $scope.selectedTitle = title;
+                    }
+                    if (response.data.code == 400) {
+                        messageSuccess(response.data.message);
+                    }
+                })
+            } else {
+
+                console.log('outside');
+                // Remove btn-success class from all buttons
+                angular.element(document.querySelectorAll('.btn-success')).removeClass('btn-success');
+                // Add btn-success class to the clicked button
+                angular.element(event.target).addClass('btn-success');
+                // Set the selected button title
+                $scope.selectedButton = title;
+                // Update the input field with the selected title
+                $scope.selectedTitle = title;
+                // Nullify the $scope.appoint_date value
+
+            }
         }
     };
+
     $scope.applicantType = function(selectedValue) {
         console.log(selectedValue);
         if (selectedValue === "Self") {
@@ -289,6 +321,58 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             document.getElementById("guest").style.display = "block";
         }
     };
+    $scope.appointmentDateType = function( value) {
+        console.log(value);
+        if (value === "today") {
+            $scope.appoint_date = null;
+            console.log('today');
+            document.getElementById("date-area").style.display = "none";
+        } else {
+            console.log('other date');
+            document.getElementById("date-area").style.display = "block";
+        }
+    };
+
+
+    $scope.appointmentStore = function () {
+
+        if ($scope.name == null) {
+            messageError('Please Enter Your name')
+            return;
+        }
+
+        if ($scope.dob == null) {
+            messageError('Please Enter Your Date of Birth')
+            return;
+        }
+
+
+
+        let url = "/web-api/registration/save";
+        let params = {
+            'name': $scope.name,
+            'phone': $scope.phone,
+            'dob': $scope.dob,
+            'address': $scope.address,
+
+        };
+        $http.post(url, params).then(function success(response) {
+
+            if (response.data.code == 200) {
+
+                messageSuccess(response.data.message)
+                window.location.href = "/applicant/profile";
+
+            }
+            if (response.data.code == 400) {
+
+                messageError(response.data.message)
+            }
+            console.log(response.data);
+
+        });
+
+    }
 
 
 
