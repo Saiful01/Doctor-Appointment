@@ -15,6 +15,7 @@ Route::get('/patient/registration', [Controller::class, 'registration'])->name('
 Route::any('/patient/login', [Controller::class, 'login'])->name('patient.login');
 Route::any('/patient/forgot-password', [Controller::class, 'forgotPassword'])->name('patient.forgot.password');
 Route::any('/patient/appointment', [Controller::class, 'appointment'])->name('patient.appointment');
+Route::any('/serial-booking-update', [Controller::class, 'serialBookingUpdate'])->name('serial.booking.update');
 
 
 Route::group(['prefix' => 'applicant', 'as' => 'applicant.', 'middleware' => 'applicant'], function () {
