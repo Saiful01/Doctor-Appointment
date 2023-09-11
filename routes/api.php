@@ -41,6 +41,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Appointment
     Route::apiResource('appointments', 'AppointmentApiController');
+    Route::get('today-appointments', 'AppointmentApiController@todayAppointments')->name('today.appointments');
+    Route::get('applicant-appointments', 'AppointmentApiController@applicantAppointments')->name('today.appointments');
 
     // Specialist
     Route::post('specialists/media', 'SpecialistApiController@storeMedia')->name('specialists.storeMedia');
