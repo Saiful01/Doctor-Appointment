@@ -20,7 +20,7 @@ class PlatformApiController extends Controller
     {
         //abort_if(Gate::denies('platform_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new PlatformResource(Platform::all());
+        return new PlatformResource(Platform::first());
     }
 
     public function store(StorePlatformRequest $request)

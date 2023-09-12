@@ -13,11 +13,19 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UpazilaApiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         //abort_if(Gate::denies('upazila_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new UpazilaResource(Upazila::with(['district'])->get());
+        $query=Upazila::with(['district']);
+
+        if ($request['district_id']){
+            $query->where('district_id',$request['district_id']);
+        }
+
+        $upzilas=$query->get();
+
+        return new UpazilaResource($upzilas);
     }
 
     public function store(StoreUpazilaRequest $request)

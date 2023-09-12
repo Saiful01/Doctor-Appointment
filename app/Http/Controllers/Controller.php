@@ -102,4 +102,16 @@ class Controller extends BaseController
 
         return view('frontend.login.login');
     }
+
+    public function serialBookingUpdate()
+    {
+        $datas= DoctorSerial::update([
+            'is_book'=> false,
+        ]);
+        return [
+            'code' => 200,
+            'message' => "Successfully updated",
+            'data' =>$datas
+        ];
+    }
 }

@@ -10,6 +10,7 @@ use App\Models\Appointment;
 use App\Models\DoctorSerial;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Symfony\Component\HttpFoundation\Response;
 
 class AppointmentApiController extends Controller
@@ -19,6 +20,20 @@ class AppointmentApiController extends Controller
        // abort_if(Gate::denies('appointment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new AppointmentResource(Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->get());
+    }
+    public function todayAppointments(Request $request)
+    {
+       // abort_if(Gate::denies('appointment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $query = Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->where('appoint_date', Carbon::today());
+
+        if (!$request['hospital_id']){
+            $query->where('hospital_id', $request['hospital_id']);
+        }
+
+        $appointments = $query->OrderBy('created_at', "DESC")->get();
+
+        return new AppointmentResource($appointments);
     }
 
     public function store(Request $request)

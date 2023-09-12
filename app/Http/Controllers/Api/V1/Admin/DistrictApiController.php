@@ -13,11 +13,19 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DistrictApiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         //abort_if(Gate::denies('district_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DistrictResource(District::with(['division'])->get());
+        $query=District::with(['division']);
+
+        if ($request['division_id']){
+            $query->where('division_id',$request['division_id']);
+        }
+
+        $distrcits=$query->get();
+
+        return new DistrictResource($distrcits);
     }
 
     public function store(StoreDistrictRequest $request)

@@ -22,6 +22,12 @@ class DoctorApiController extends Controller
 
         return new DoctorResource(Doctor::with(['designation', 'specialists', 'hospitals', 'days'])->get());
     }
+    public function doctorInformation()
+    {
+        //abort_if(Gate::denies('doctor_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return new DoctorResource(Doctor::with(['designation', 'specialists', 'hospitals', 'days'])->first());
+    }
 
     public function store(StoreDoctorRequest $request)
     {
