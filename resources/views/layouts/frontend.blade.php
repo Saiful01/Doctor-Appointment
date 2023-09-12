@@ -86,12 +86,12 @@
         <!-- Start Dropdown -->
         <ul class="dropdowns list-inline mb-0">
 
-            <li class="list-inline-item mb-0 ms-1">
+        {{--    <li class="list-inline-item mb-0 ms-1">
                 <a href="javascript:void(0)" class="btn btn-icon btn-pills btn-primary" data-bs-toggle="offcanvas"
                    data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
                     <i data-feather="search" class="fea icon-sm text-foot align-middle"></i>
                 </a>
-            </li>
+            </li>--}}
             @if(Auth::guard('applicant')->check())
 
             <li class="list-inline-item mb-0 ms-1">
@@ -102,7 +102,7 @@
                     </button>
                     <div class="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3"
                          style="min-width: 200px;">
-                        <a class="dropdown-item d-flex align-items-center text-dark" href="doctor-profile.html">
+                        <a class="dropdown-item d-flex align-items-center text-dark" href="/patient/profile">
                             <img src="/assets/images/doctors/01.jpg"
                                  class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                             <div class="flex-1 ms-2">
@@ -110,15 +110,13 @@
                                {{-- <small class="text-muted">Orthopedic</small>--}}
                             </div>
                         </a>
-                        <a class="dropdown-item text-dark" href="/applicant/profile"><span
+                        <a class="dropdown-item text-dark" href="/patient/profile"><span
                                 class="mb-0 d-inline-block me-1"><i
-                                    class="uil uil-dashboard align-middle h6"></i></span> Dashboard</a>
-                        <a class="dropdown-item text-dark" href="doctor-profile-setting.html"><span
-                                class="mb-0 d-inline-block me-1"><i class="uil uil-setting align-middle h6"></i></span>
-                            Profile Settings</a>
+                                    class="ri-dashboard-2-fill align-middle h6"></i></span> Dashboard</a>
+
                         <div class="dropdown-divider border-top"></div>
                         <a class="dropdown-item text-dark" href="/applicant/logout"><span class="mb-0 d-inline-block me-1"><i
-                                    class="uil uil-sign-out-alt align-middle h6"></i></span> Logout</a>
+                                    class="ri-logout-box-fill align-middle h6"></i></span> Logout</a>
                     </div>
                 </div>
             </li>
@@ -168,14 +166,7 @@
                     <a href="/" class="active">Blog</a>
 
                 </li>
-
-
-
-
-
-
-                <li><a href="" class="btn btn-primary"
-                       target="_blank">Book Appointment</a></li>
+                <li><a href="/patient/appointment" class="btn btn-primary">Book Appointment</a></li>
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
     </div><!--end container-->

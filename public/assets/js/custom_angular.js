@@ -3,8 +3,18 @@ app.controller('appointmentController', function ($scope, $http, $location) {
 
     var intervalId;
 
+    $scope.selectedApplicantType = "Self";
+    $scope.appointment_date_type = "Today";
+    $scope.appoint_type = "New Visit";
+
+
     document.getElementById("guest").style.display = "none";
     document.getElementById("date-area").style.display = "none";
+    document.getElementById("guest2").style.display = "none";
+    document.getElementById("date-area2").style.display = "none";
+
+
+
 
 
     $scope.sendOtp = function () {
@@ -196,7 +206,7 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             if (response.data.code == 200) {
 
                 messageSuccess(response.data.message)
-                window.location.href = "/applicant/profile";
+                window.location.href = "/patient/profile";
 
             }
             if (response.data.code == 400) {
@@ -321,35 +331,93 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             document.getElementById("guest").style.display = "block";
         }
     };
+    $scope.applicantType2 = function(selectedValue) {
+        console.log(selectedValue);
+        if (selectedValue === "Self") {
+            console.log('self');
+            document.getElementById("guest2").style.display = "none";
+        } else {
+            console.log('guest');
+            document.getElementById("guest2").style.display = "block";
+        }
+    };
     $scope.appointmentDateType = function( value) {
         console.log(value);
-        if (value === "today") {
+        if (value === "Today") {
             $scope.appoint_date = null;
-            console.log('today');
+            console.log('Today');
             document.getElementById("date-area").style.display = "none";
         } else {
             console.log('other date');
             document.getElementById("date-area").style.display = "block";
         }
     };
+    $scope.appointmentDateType2 = function( value) {
+        console.log(value);
+        if (value === "Today") {
+            $scope.appoint_date = null;
+            console.log('Today');
+            document.getElementById("date-area2").style.display = "none";
+        } else {
+            console.log('other date');
+            document.getElementById("date-area2").style.display = "block";
+        }
+    };
 
 
     $scope.appointmentStore = function () {
 
-        if ($scope.name == null) {
-            messageError('Please Enter Your name')
+        if (!$scope.appointment_date_type) {
+            messageError('Please Select Appoint Date Type')
             return;
         }
 
-        if ($scope.dob == null) {
-            messageError('Please Enter Your Date of Birth')
+        if ($scope.appointment_date_type === "Other" && $scope.appoint_date == null) {
+            messageError('Please Select Your Appointment Date ')
             return;
+        }
+        if (!$scope.selectedTitle) {
+            messageError('Please Select Your  Serial')
+            return;
+        }
+        if (!$scope.appoint_type) {
+            messageError('Please Select Appoint Type')
+            return;
+        }
+        if (!$scope.selectedApplicantType) {
+            messageError('Please Select Applicant Type')
+            return;
+        }
+
+        if ($scope.selectedApplicantType === "Other") {
+            if (!$scope.name) {
+                messageError('Please Enter Your Patient name')
+                return;
+            }
+            if (!$scope.phone) {
+                messageError('Please Enter Your Patient Phone')
+                return;
+            }
+            if (!$scope.dob) {
+                messageError('Please Enter Your Patient Date Of Birth')
+                return;
+            }
+            if (!$scope.address) {
+                messageError('Please Enter Your Patient Address')
+                return;
+            }
+
         }
 
 
 
-        let url = "/web-api/registration/save";
+        let url = "/web-api/appointment/save";
         let params = {
+            'appointment_date_type': $scope.appointment_date_type,
+            'appoint_date': $scope.appoint_date,
+            'serial_id': $scope.selectedTitle,
+            'appoint_type': $scope.appoint_type,
+            'applicant_type': $scope.selectedApplicantType,
             'name': $scope.name,
             'phone': $scope.phone,
             'dob': $scope.dob,
@@ -361,7 +429,7 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             if (response.data.code == 200) {
 
                 messageSuccess(response.data.message)
-                window.location.href = "/applicant/profile";
+                window.location.href = "/patient/profile";
 
             }
             if (response.data.code == 400) {

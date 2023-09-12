@@ -14,12 +14,12 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 Route::get('/patient/registration', [Controller::class, 'registration'])->name('patient.registration');
 Route::any('/patient/login', [Controller::class, 'login'])->name('patient.login');
 Route::any('/patient/forgot-password', [Controller::class, 'forgotPassword'])->name('patient.forgot.password');
-Route::any('/patient/appointment', [Controller::class, 'appointment'])->name('patient.appointment');
 
-
-Route::group(['prefix' => 'applicant', 'as' => 'applicant.', 'middleware' => 'applicant'], function () {
+Route::group(['prefix' => 'patient', 'as' => 'applicant.', 'middleware' => 'applicant'], function () {
     Route::get('/profile', [ApplicantActivityController::class, 'profile'])->name('profile');
     Route::get('/logout', [ApplicantActivityController::class, 'logout'])->name('logout');
+    Route::any('/appointment', [Controller::class, 'appointment'])->name('appointment');
+    Route::any('/appointment-list', [Controller::class, 'appointmentList'])->name('appointment.list');
 
 });
 
@@ -31,6 +31,7 @@ Route::group(['prefix' => 'applicant', 'as' => 'applicant.', 'middleware' => 'ap
     Route::any('/registration/save', [PublicApiController::class, 'registrationSave'])->name('registration-save');
     Route::any('/reset-password', [PublicApiController::class, 'resetPassword'])->name('reset-password');
     Route::any('/serial-booking-check', [PublicApiController::class, 'serialBookingCheck'])->name('serial.booking.check');
+    Route::any('/appointment/save', [PublicApiController::class, 'appointmentBooking'])->name('appointment.booking');
 
 });
 

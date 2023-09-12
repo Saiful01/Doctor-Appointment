@@ -82,7 +82,7 @@ class Controller extends BaseController
             //return $request->all();
             if (Auth::guard('applicant')->attempt(['phone' => $request['phone'], 'password' => $request['password']])) {
                 if ($request['previous_route'] == null) {
-                    return Redirect::to('/applicant/profile');
+                    return Redirect::to('/patient/profile');
                 } else {
                     return Redirect::to($request['previous_route']);
                 }

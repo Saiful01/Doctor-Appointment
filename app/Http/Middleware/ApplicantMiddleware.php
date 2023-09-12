@@ -19,7 +19,7 @@ class ApplicantMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::guard("applicant")->check()) {
-            return Redirect::to("/applicant/login");
+            return Redirect::to("/patient/login");
         }
         return $next($request);
     }

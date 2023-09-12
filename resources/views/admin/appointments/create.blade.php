@@ -96,7 +96,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="appointment_token">{{ trans('cruds.appointment.fields.appointment_token') }}</label>
-                <input class="form-control {{ $errors->has('appointment_token') ? 'is-invalid' : '' }}" type="text" name="appointment_token" id="appointment_token" value="{{ Str::random(10) }}" readonly required>
+                <input class="form-control {{ $errors->has('appointment_token') ? 'is-invalid' : '' }}" type="text" name="appointment_token" id="appointment_token" value="{{ uniqid() }}" readonly required>
                 @if($errors->has('appointment_token'))
                     <div class="invalid-feedback">
                         {{ $errors->first('appointment_token') }}

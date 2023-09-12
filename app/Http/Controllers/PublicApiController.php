@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Applicant;
 use App\Models\Appointment;
+use App\Models\AppointmentStatus;
+use App\Models\DoctorSerial;
+use App\Models\GuestPatient;
 use App\Models\Otp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -48,14 +51,14 @@ class PublicApiController extends Controller
 
 
         $phone = $request['phone'];
-     /*   if (validatePhoneNumber($phone) != 1) {
-            return [
-                'code' => 201,
-                'message' => "The number is not valid",
-                'data' => $request->all(),
-                'phone' => $phone,
-            ];
-        }*/
+        /*   if (validatePhoneNumber($phone) != 1) {
+               return [
+                   'code' => 201,
+                   'message' => "The number is not valid",
+                   'data' => $request->all(),
+                   'phone' => $phone,
+               ];
+           }*/
 
         $otp = rand(1000, 9999);
         $is_exist = Otp::where('phone', $phone)->where('is_used', false)->orderBy('created_at', 'DESC')->first();
@@ -148,17 +151,96 @@ class PublicApiController extends Controller
     public function registrationSave(Request $request)
     {
 
-       // return $request->all();
+        // return $request->all();
 
         $request['password'] = Hash::make($request['password']);
         $createdAt = Carbon::parse($request['dob']);
-        $request['dob']= $createdAt->format('d-m-y');
+        $request['dob'] = $createdAt->format('d-m-y');
         try {
             $applicant = Applicant::create($request->all());
             Auth::guard('applicant')->loginUsingId($applicant->id);
             return [
                 'code' => 200,
                 'message' => "Congratulations! You have successfully registered",
+            ];
+        } catch (\Exception $e) {
+            return [
+                'code' => 400,
+                'message' => $e->getMessage(),
+            ];
+        }
+
+    }
+
+    public function appointmentBooking(Request $request)
+    {
+
+
+        if (!$request['appoint_date']) {
+            $appoint_date = Carbon::today()->format('Y-m-d');
+        } else {
+            $date = Carbon::parse($request['appoint_date']);
+            $appoint_date = $date->format('Y-m-d');
+        }
+
+
+        $exist = Appointment::where('serial_id', $request['serial_id'])->where('appoint_date', $appoint_date)->first();
+        if ($exist) {
+            return [
+                'code' => 400,
+                'message' => "This Serial is Booked For appoint Date , Please Select Another Serial",
+            ];
+
+        }
+
+        $createdAt = Carbon::parse($request['dob']);
+        $request['dob'] = $createdAt->format('d-m-Y');
+        $guest = [
+            'name' => $request['name'],
+            'phone' => $request['phone'],
+            'dob' => $request['d-m-y'],
+            'address' => $request['address'],
+        ];
+
+        $guest_id = null;
+
+        if ($request['applicant_type'] == "Other") {
+            $guest_id = GuestPatient::insertGetId($guest);
+        }
+        $serial = DoctorSerial::find($request['serial_id']);
+
+        $date = Carbon::parse($appoint_date);
+        $request['appoint_date'] = $date->format('d-m-Y');
+
+        $appointment_array = [
+            'appoint_type' => $request['appoint_type'],
+            'appointment_token' => uniqid(),
+            'applicant_type' => $request['applicant_type'],
+            'appoint_date' => $request['appoint_date'],
+            'doctor_id' => $serial->doctor_id,
+            'hospital_id' => $serial->hospital_id,
+            'serial_id' => $serial->id,
+            'applicant_id' => 1/*Auth::guard('applicant')->user()->id*/,
+            'guest_patient_id' => $guest_id,
+            'status_id' => 1,
+        ];
+
+
+        try {
+            $appointment = Appointment::create($appointment_array);
+
+            DoctorSerial::where('id', $request['serial_id'])->update(['is_book' => 1]);
+
+            $appointment_status = [
+                'appointment_id' => $appointment->id,
+                'status_id' => 1,
+            ];
+
+            AppointmentStatus::create($appointment_status);
+
+            return [
+                'code' => 200,
+                'message' => "Congratulations! Your Serial is Booked",
             ];
         } catch (\Exception $e) {
             return [
@@ -190,18 +272,19 @@ class PublicApiController extends Controller
         }
 
     }
+
     public function serialBookingCheck(Request $request)
     {
 
         //return $request->all();
-        $exist= Appointment::where('serial_id', $request['serial_id'])->where('appoint_date' ,$request['appoint_date'])->first();
+        $exist = Appointment::where('serial_id', $request['serial_id'])->where('appoint_date', $request['appoint_date'])->first();
 
-        if ($exist){
+        if ($exist) {
             return [
                 'code' => 400,
                 'message' => "This Serial Is Booked For this Days, Please Select Other Serial",
             ];
-        }else{
+        } else {
 
             return [
                 'code' => 200,
@@ -211,9 +294,8 @@ class PublicApiController extends Controller
         }
 
 
-
-
     }
+
     function validatePhoneNumber($phone)
     {
         if ($phone == null) {
