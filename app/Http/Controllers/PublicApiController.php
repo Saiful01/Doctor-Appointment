@@ -220,7 +220,7 @@ class PublicApiController extends Controller
             'doctor_id' => $serial->doctor_id,
             'hospital_id' => $serial->hospital_id,
             'serial_id' => $serial->id,
-            'applicant_id' => 1/*Auth::guard('applicant')->user()->id*/,
+            'applicant_id' => Auth::guard('applicant')->user()->id,
             'guest_patient_id' => $guest_id,
             'status_id' => 1,
         ];

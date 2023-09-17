@@ -20,7 +20,7 @@ class HospitalApiController extends Controller
     {
         //abort_if(Gate::denies('hospital_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new HospitalResource(Hospital::all());
+        return new HospitalResource(Hospital::with('hospitalDoctorSerials')->get());
     }
 
     public function store(StoreHospitalRequest $request)

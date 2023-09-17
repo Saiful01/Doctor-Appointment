@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\V1\Admin\ApplicantApiController;
 use App\Http\Controllers\Api\V1\Admin\DistrictApiController;
 use App\Http\Controllers\Api\V1\Admin\DivisionApiController;
 use App\Http\Controllers\Api\V1\Admin\DoctorApiController;
+use App\Http\Controllers\Api\V1\Admin\DoctorSerialApiController;
+use App\Http\Controllers\Api\V1\Admin\HospitalApiController;
 use App\Http\Controllers\Api\V1\Admin\PlatformApiController;
 use App\Http\Controllers\Api\V1\Admin\UpazilaApiController;
 use App\Http\Controllers\Api\V1\Admin\UsersApiController;
@@ -19,6 +21,8 @@ Route::get('/districts', [DistrictApiController::class, 'index']);
 Route::get('/upazilas', [UpazilaApiController::class, 'index']);
 Route::get('/doctor-information', [DoctorApiController::class, 'doctorInformation']);
 Route::get('/platform-information', [PlatformApiController::class, 'index']);
+Route::get('/hospitals', [HospitalApiController::class, 'index']);
+Route::get('/doctor-serials', [DoctorSerialApiController::class, 'index']);
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Users

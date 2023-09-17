@@ -13,11 +13,19 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DoctorSerialApiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         //abort_if(Gate::denies('doctor_serial_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DoctorSerialResource(DoctorSerial::with(['doctor', 'hospital'])->get());
+        $query=DoctorSerial::with(['doctor', 'hospital']);
+        if ($request['hospital_id']){
+            $query->where('hospital_id',$request['hospital_id'] );
+
+        }
+        $serials= $query->get();
+
+
+        return new DoctorSerialResource($serials);
     }
 
     public function store(StoreDoctorSerialRequest $request)
