@@ -210,6 +210,7 @@ class ApplicantApiController extends Controller
                 ], 400);
             }
 
+
             if (!Auth::guard('applicant')->attempt($request->only(['phone', 'password']))) {
                 return response()->json([
                     'status' => false,

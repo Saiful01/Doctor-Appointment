@@ -17,14 +17,14 @@
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label class="form-label">Your Phone <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" placeholder="Phone" name="phone" required="">
+                                            <input type="text" class="form-control" placeholder="Phone" name="phone" value="{{old('phone')}}" required="">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label class="form-label">Password <span class="text-danger">*</span></label>
-                                            <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                                            <input type="password" name="password" value="{{old('password')}}" class="form-control" placeholder="Password" required="">
                                         </div>
                                     </div>
 

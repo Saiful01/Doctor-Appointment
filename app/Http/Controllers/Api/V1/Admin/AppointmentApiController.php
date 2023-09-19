@@ -37,6 +37,25 @@ class AppointmentApiController extends Controller
 
         return new AppointmentResource($appointments);
     }
+    public function applicantAppointments(Request $request)
+    {
+
+
+        $query = Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->where('applicant_id', $request['applicant_id']);
+
+
+         $appointments = $query->OrderBy('created_at', "DESC")->get();
+
+        return new AppointmentResource($appointments);
+    }
+    public function applicantTodayAppointments(Request $request)
+    {
+       $query = Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->where('applicant_id', $request['applicant_id'])->where('appoint_date', Carbon::today());
+
+       $appointments = $query->OrderBy('created_at', "DESC")->get();
+
+        return new AppointmentResource($appointments);
+    }
 
     public function store(Request $request)
     {

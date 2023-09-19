@@ -105,13 +105,15 @@ class Controller extends BaseController
 
     public function serialBookingUpdate()
     {
-        $datas= DoctorSerial::update([
-            'is_book'=> false,
+        DoctorSerial::where('is_book', true)->update([
+            'is_book' => false,
         ]);
+        $datas = DoctorSerial::all();
+
         return [
             'code' => 200,
-            'message' => "Successfully updated",
-            'data' =>$datas
+            'message' => 'Successfully updated',
+            'data' => $datas,
         ];
     }
 }

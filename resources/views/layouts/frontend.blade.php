@@ -41,6 +41,7 @@
 </head>
 
 <body ng-app="myApp" ng-controller="appointmentController">
+@include('sweetalert::alert')
 <!-- Loader -->
 <!-- <div id="preloader">
     <div id="status">
@@ -115,7 +116,7 @@
                                     class="ri-dashboard-2-fill align-middle h6"></i></span> Dashboard</a>
 
                         <div class="dropdown-divider border-top"></div>
-                        <a class="dropdown-item text-dark" href="/applicant/logout"><span class="mb-0 d-inline-block me-1"><i
+                        <a class="dropdown-item text-dark" href="/patient/logout"><span class="mb-0 d-inline-block me-1"><i
                                     class="ri-logout-box-fill align-middle h6"></i></span> Logout</a>
                     </div>
                 </div>
