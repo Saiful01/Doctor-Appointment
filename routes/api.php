@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Api\V1\Admin\ApplicantApiController;
+use App\Http\Controllers\Api\V1\Admin\BlogApiController;
 use App\Http\Controllers\Api\V1\Admin\DistrictApiController;
 use App\Http\Controllers\Api\V1\Admin\DivisionApiController;
 use App\Http\Controllers\Api\V1\Admin\DoctorApiController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\Api\V1\Admin\HospitalApiController;
 use App\Http\Controllers\Api\V1\Admin\PlatformApiController;
 use App\Http\Controllers\Api\V1\Admin\UpazilaApiController;
 use App\Http\Controllers\Api\V1\Admin\UsersApiController;
+use App\Http\Controllers\Api\V1\Admin\VideoApiController;
+use App\Models\Video;
 
 Route::post('/admin/login', [UsersApiController::class, 'loginUser']);
 Route::post('/applicant/login', [ApplicantApiController::class, 'patientLogin']);
@@ -23,6 +26,9 @@ Route::get('/doctor-information', [DoctorApiController::class, 'doctorInformatio
 Route::get('/platform-information', [PlatformApiController::class, 'index']);
 Route::get('/hospitals', [HospitalApiController::class, 'index']);
 Route::get('/doctor-serials', [DoctorSerialApiController::class, 'index']);
+Route::get('blogs', [BlogApiController::class, 'index']);
+Route::get('videos', [VideoApiController::class, 'index']);
+
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Users
@@ -43,6 +49,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Status
     Route::apiResource('statuses', 'StatusApiController');
+    Route::post('status-update', 'StatusApiController@statusUpdate')->name('status.update');
 
     // Applicant
     Route::apiResource('applicants', 'ApplicantApiController');

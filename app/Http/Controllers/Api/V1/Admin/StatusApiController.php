@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStatusRequest;
 use App\Http\Requests\UpdateStatusRequest;
 use App\Http\Resources\Admin\StatusResource;
+use App\Models\Appointment;
+use App\Models\AppointmentStatus;
 use App\Models\Status;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class StatusApiController extends Controller
@@ -27,6 +30,45 @@ class StatusApiController extends Controller
         return (new StatusResource($status))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+    }
+    public function statusUpdate(Request $request)
+    {
+        try {
+            $validateUser = Validator::make($request->all(),
+                [
+                    'appointment_id' => 'required',
+                    'status_id' => 'required'
+                ]);
+
+            if ($validateUser->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'validation error',
+                    'errors' => $validateUser->errors()
+                ], 400);
+            }
+
+
+
+            $applicant = AppointmentStatus::create($request->all());
+
+            Appointment::where('id', $request['appointment_id'])->update([
+                'status_id' => $request['status_id']
+            ]);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Status Successfully Updated',
+                'data' => $applicant,
+            ], 200);
+
+        } catch (\Exception $exception) {
+
+            return response()->json([
+                'status' => false,
+                'message' => $exception->getMessage()
+            ], 400);
+        }
     }
 
     public function show(Status $status)

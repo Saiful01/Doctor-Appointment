@@ -1,6 +1,9 @@
 app.controller('appointmentController', function ($scope, $http, $location) {
 
 
+    console.log('angular active')
+
+
     var intervalId;
 
     $scope.selectedApplicantType = "Self";
@@ -135,7 +138,7 @@ app.controller('appointmentController', function ($scope, $http, $location) {
         }, 1000);
     };
     $scope.register = function () {
-        console.log($scope.password)
+        console.log( 'all ok')
         if ($scope.name == null) {
             messageError('Please Enter Your name')
             return;

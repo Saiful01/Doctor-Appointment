@@ -152,18 +152,18 @@
 
                 </li>
                 <li class="has-submenu parent-menu-item">
-                    <a href="/" class="active">About Us</a>
+                    <a href="#about" class="active">About Us</a>
 
                 </li>
                 <li class="has-submenu parent-menu-item">
-                    <a href="/" class="active">Contact</a>
+                    <a href="/contact" class="active">Contact</a>
 
                 </li>
                 <li class="has-submenu parent-menu-item">
-                    <a href="/" class="active">Blog</a>
+                    <a href="#blog" class="active">Blog</a>
 
                 </li>
-                <li><a href="/patient/appointment" class="btn btn-primary">Book Appointment</a></li>
+                <li><a href="/book/appointment" class="btn btn-primary">Book Appointment</a></li>
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
     </div><!--end container-->
@@ -174,6 +174,7 @@
 @yield('content')
 
 
+<!-- Start -->
 <footer class="">
     <div class="container">
         <div class="row">
@@ -181,8 +182,8 @@
                 <a href="#" class="logo-footer">
                     <img src="/assets/images/logo-light.png" height="22" alt="">
                 </a>
-                <p class="mt-4 me-xl-5">Great doctor if you need your family member to get effective immediate
-                    assistance, emergency treatment or a simple consultation.</p>
+                <p class="mt-4 me-xl-5">Dr.Md.Mustafizur Rahman MBBS , BCS ( Health ) FCPS: surgery MS: hepatobiliary
+                    and pancreatic surgeon. Assistant Professor</p>
             </div><!--end col-->
 
             <div class="col-xl-7 col-lg-8 col-md-12">
@@ -190,40 +191,27 @@
                     <div class="col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <h5 class="footer-head">Company</h5>
                         <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="aboutus.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
+                            <li><a href="#about" class="text-foot">
                                     About us</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Services</a></li>
-                            <li><a href="doctor-team-two.html" class="text-foot"><i
-                                        class="mdi mdi-chevron-right me-1"></i> Team</a></li>
-                            <li><a href="blog-detail.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Project</a></li>
-                            <li><a href="blogs.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Blog</a></li>
-                            <li><a href="login.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i> Login</a>
+
+                            <li><a href="/contact" class="text-foot"> Contact</a></li>
+                            <li>
+                                <a href="#video" class="text-foot">
+                                    video</a>
+                            </li>
+                            <li>
+                                <a href="#blog" class="text-foot">
+                                    Blog</a>
+                            </li>
+                            <li>
+                                <a href="/patient/login" class="text-foot"> Login</a>
+                            </li>
+                            <li>
+                                <a href="/patient/registration" class="text-foot"> Registration</a>
                             </li>
                         </ul>
                     </div><!--end col-->
 
-                    <div class="col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="footer-head">Departments</h5>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Eye Care</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Psychotherapy</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Dental Care</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Orthopedic</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Cardiology</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Gynecology</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Neurology</a></li>
-                        </ul>
-                    </div><!--end col-->
 
                     <div class="col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <h5 class="footer-head">Contact us</h5>
@@ -273,23 +261,19 @@
                         <p class="mb-0">
                             <script>document.write(new Date().getFullYear())</script>
                             © Doctris. Design with <i class="mdi mdi-heart text-danger"></i> by <a
-                                href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.
+                                href="" target="_blank" class="text-reset">WebAid</a>.
                         </p>
                     </div>
                 </div><!--end col-->
 
                 <div class="col-sm-6 mt-4 mt-sm-0">
-                    <ul class="list-unstyled footer-list text-sm-end text-center mb-0">
-                        <li class="list-inline-item"><a href="terms.html" class="text-foot me-2">Terms</a></li>
-                        <li class="list-inline-item"><a href="privacy.html" class="text-foot me-2">Privacy</a></li>
-                        <li class="list-inline-item"><a href="aboutus.html" class="text-foot me-2">About</a></li>
-                        <li class="list-inline-item"><a href="contact.html" class="text-foot me-2">Contact</a></li>
-                    </ul>
+
                 </div><!--end col-->
             </div><!--end row-->
         </div>
     </div><!--end container-->
 </footer><!--end footer-->
+<!-- End -->
 
 <!-- Back to top -->
 <a href="#" onclick="topFunction()" id="back-to-top"

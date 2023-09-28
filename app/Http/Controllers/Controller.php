@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applicant;
+use App\Models\Blog;
 use App\Models\District;
 use App\Models\Division;
+use App\Models\Doctor;
 use App\Models\DoctorSerial;
+use App\Models\Hospital;
+use App\Models\Platform;
 use App\Models\Upazila;
+use App\Models\Video;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -23,7 +28,13 @@ class Controller extends BaseController
 
     public function home()
     {
-        return view('frontend.home.index');
+
+          $doctor = Doctor::with(['designation', 'specialists', 'hospitals', 'days', 'media'])->first();
+
+          $hospitals= Hospital::get();
+          $blogs= Blog::get();
+          $videos= Video::get();
+        return view('frontend.home.index',compact('doctor','hospitals','blogs','videos'));
     }
     public function appointment()
     {
@@ -115,5 +126,17 @@ class Controller extends BaseController
             'message' => 'Successfully updated',
             'data' => $datas,
         ];
+    }
+    public function blogDetails($id)
+    {
+      $blog= Blog::find($id);
+
+      return view('frontend.blog.details', compact('blog'));
+    }
+    public function contact()
+    {
+      $contact= Platform::find(1);
+
+      return view('frontend.contact.index', compact('contact'));
     }
 }

@@ -14,15 +14,18 @@ Route::get('/', [Controller::class, 'home'])->name('home');
 Route::get('/patient/registration', [Controller::class, 'registration'])->name('patient.registration');
 Route::any('/patient/login', [Controller::class, 'login'])->name('patient.login');
 Route::any('/patient/forgot-password', [Controller::class, 'forgotPassword'])->name('patient.forgot.password');
-Route::any('/patient/appointment', [Controller::class, 'appointment'])->name('patient.appointment');
+Route::any('/book/appointment', [Controller::class, 'appointment'])->name('book.appointment');
 Route::any('/serial-booking-update', [Controller::class, 'serialBookingUpdate'])->name('serial.booking.update');
+Route::any('/blog-details/{id}', [Controller::class, 'blogDetails'])->name('blog.details');
+Route::any('/contact', [Controller::class, 'contact'])->name('contact');
 
 
 Route::group(['prefix' => 'patient', 'as' => 'applicant.', 'middleware' => 'applicant'], function () {
     Route::get('/profile', [ApplicantActivityController::class, 'profile'])->name('profile');
+    Route::post('/profile-update', [ApplicantActivityController::class, 'profileUpdate'])->name('profile.update');
     Route::get('/logout', [ApplicantActivityController::class, 'logout'])->name('logout');
     Route::any('/appointment', [Controller::class, 'appointment'])->name('appointment');
-    Route::any('/appointment-list', [Controller::class, 'appointmentList'])->name('appointment.list');
+    Route::any('/appointment-list', [ApplicantActivityController::class, 'appointmentList'])->name('appointment.list');
 
 });
 

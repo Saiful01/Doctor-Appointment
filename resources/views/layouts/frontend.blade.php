@@ -26,7 +26,6 @@
     <link href="/assets/css/style.min.css" class="theme-opt" rel="stylesheet" type="text/css"/>
 
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
@@ -87,61 +86,64 @@
         <!-- Start Dropdown -->
         <ul class="dropdowns list-inline mb-0">
 
-        {{--    <li class="list-inline-item mb-0 ms-1">
-                <a href="javascript:void(0)" class="btn btn-icon btn-pills btn-primary" data-bs-toggle="offcanvas"
-                   data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                    <i data-feather="search" class="fea icon-sm text-foot align-middle"></i>
-                </a>
-            </li>--}}
+            {{--    <li class="list-inline-item mb-0 ms-1">
+                    <a href="javascript:void(0)" class="btn btn-icon btn-pills btn-primary" data-bs-toggle="offcanvas"
+                       data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                        <i data-feather="search" class="fea icon-sm text-foot align-middle"></i>
+                    </a>
+                </li>--}}
             @if(Auth::guard('applicant')->check())
 
-            <li class="list-inline-item mb-0 ms-1">
-                <div class="dropdown dropdown-primary">
-                    <button type="button" class="btn btn-pills btn-soft-primary dropdown-toggle p-0"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                            src="/assets/images/doctors/01.jpg" class="avatar avatar-ex-small rounded-circle" alt="">
-                    </button>
-                    <div class="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3"
-                         style="min-width: 200px;">
-                        <a class="dropdown-item d-flex align-items-center text-dark" href="/patient/profile">
-                            <img src="/assets/images/doctors/01.jpg"
-                                 class="avatar avatar-md-sm rounded-circle border shadow" alt="">
-                            <div class="flex-1 ms-2">
-                                <span class="d-block mb-1">{{Auth::guard('applicant')->user()->name}}</span>
-                               {{-- <small class="text-muted">Orthopedic</small>--}}
-                            </div>
-                        </a>
-                        <a class="dropdown-item text-dark" href="/patient/profile"><span
-                                class="mb-0 d-inline-block me-1"><i
-                                    class="ri-dashboard-2-fill align-middle h6"></i></span> Dashboard</a>
+                <li class="list-inline-item mb-0 ms-1">
+                    <div class="dropdown dropdown-primary">
+                        <button type="button" class="btn btn-pills btn-soft-primary dropdown-toggle p-0"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                src="/assets/images/doctors/01.jpg" class="avatar avatar-ex-small rounded-circle"
+                                alt="">
+                        </button>
+                        <div class="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3"
+                             style="min-width: 200px;">
+                            <a class="dropdown-item d-flex align-items-center text-dark" href="/patient/profile">
+                                <img src="/assets/images/doctors/01.jpg"
+                                     class="avatar avatar-md-sm rounded-circle border shadow" alt="">
+                                <div class="flex-1 ms-2">
+                                    <span class="d-block mb-1">{{Auth::guard('applicant')->user()->name}}</span>
+                                    {{-- <small class="text-muted">Orthopedic</small>--}}
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-dark" href="/patient/profile"><span
+                                    class="mb-0 d-inline-block me-1"><i
+                                        class="ri-dashboard-2-fill align-middle h6"></i></span> Dashboard</a>
 
-                        <div class="dropdown-divider border-top"></div>
-                        <a class="dropdown-item text-dark" href="/patient/logout"><span class="mb-0 d-inline-block me-1"><i
-                                    class="ri-logout-box-fill align-middle h6"></i></span> Logout</a>
+                            <div class="dropdown-divider border-top"></div>
+                            <a class="dropdown-item text-dark" href="/patient/logout"><span
+                                    class="mb-0 d-inline-block me-1"><i
+                                        class="ri-logout-box-fill align-middle h6"></i></span> Logout</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
             @else
                 <li class="list-inline-item mb-0 ms-1">
                     <div class="dropdown dropdown-primary">
                         <button type="button" class="btn btn-icon btn-pills btn-primary"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ri-user-line"></i>
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="ri-user-line"></i>
                         </button>
                         <div class="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3"
                              style="min-width: 200px;">
                             <a class="dropdown-item d-flex align-items-center text-dark" href="/patient/login">
-                             <div class="flex-1 ms-2">
+                                <div class="flex-1 ms-2">
                                     <span class="d-block mb-1">Login</span>
 
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center text-dark" href="/patient/registration">
-                             <div class="flex-1 ms-2">
+                                <div class="flex-1 ms-2">
                                     <span class="d-block mb-1">Register</span>
 
                                 </div>
                             </a>
-                     </div>
+                        </div>
                     </div>
                 </li>
             @endif
@@ -156,18 +158,18 @@
 
                 </li>
                 <li class="has-submenu parent-menu-item">
-                    <a href="/" class="active">About Us</a>
+                    <a href="#about" class="active">About Us</a>
 
                 </li>
                 <li class="has-submenu parent-menu-item">
-                    <a href="/" class="active">Contact</a>
+                    <a href="/contact" class="active">Contact</a>
 
                 </li>
                 <li class="has-submenu parent-menu-item">
-                    <a href="/" class="active">Blog</a>
+                    <a href="#blog" class="active">Blog</a>
 
                 </li>
-                <li><a href="/patient/appointment" class="btn btn-primary">Book Appointment</a></li>
+                <li><a href="/book/appointment" class="btn btn-primary">Book Appointment</a></li>
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
     </div><!--end container-->
@@ -184,8 +186,8 @@
                 <a href="#" class="logo-footer">
                     <img src="/assets/images/logo-light.png" height="22" alt="">
                 </a>
-                <p class="mt-4 me-xl-5">Great doctor if you need your family member to get effective immediate
-                    assistance, emergency treatment or a simple consultation.</p>
+                <p class="mt-4 me-xl-5">Dr.Md.Mustafizur Rahman MBBS , BCS ( Health ) FCPS: surgery MS: hepatobiliary
+                    and pancreatic surgeon. Assistant Professor</p>
             </div><!--end col-->
 
             <div class="col-xl-7 col-lg-8 col-md-12">
@@ -193,40 +195,27 @@
                     <div class="col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <h5 class="footer-head">Company</h5>
                         <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="aboutus.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
+                            <li><a href="#about" class="text-foot">
                                     About us</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Services</a></li>
-                            <li><a href="doctor-team-two.html" class="text-foot"><i
-                                        class="mdi mdi-chevron-right me-1"></i> Team</a></li>
-                            <li><a href="blog-detail.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Project</a></li>
-                            <li><a href="blogs.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Blog</a></li>
-                            <li><a href="login.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i> Login</a>
+
+                            <li><a href="/contact" class="text-foot"> Contact</a></li>
+                            <li>
+                                <a href="#video" class="text-foot">
+                                    video</a>
+                            </li>
+                            <li>
+                                <a href="#blog" class="text-foot">
+                                    Blog</a>
+                            </li>
+                            <li>
+                                <a href="/patient/login" class="text-foot"> Login</a>
+                            </li>
+                            <li>
+                                <a href="/patient/registration" class="text-foot"> Registration</a>
                             </li>
                         </ul>
                     </div><!--end col-->
 
-                    <div class="col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="footer-head">Departments</h5>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Eye Care</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Psychotherapy</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Dental Care</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Orthopedic</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Cardiology</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Gynecology</a></li>
-                            <li><a href="departments.html" class="text-foot"><i class="mdi mdi-chevron-right me-1"></i>
-                                    Neurology</a></li>
-                        </ul>
-                    </div><!--end col-->
 
                     <div class="col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <h5 class="footer-head">Contact us</h5>
@@ -276,18 +265,13 @@
                         <p class="mb-0">
                             <script>document.write(new Date().getFullYear())</script>
                             © Doctris. Design with <i class="mdi mdi-heart text-danger"></i> by <a
-                                href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.
+                                href="" target="_blank" class="text-reset">WebAid</a>.
                         </p>
                     </div>
                 </div><!--end col-->
 
                 <div class="col-sm-6 mt-4 mt-sm-0">
-                    <ul class="list-unstyled footer-list text-sm-end text-center mb-0">
-                        <li class="list-inline-item"><a href="terms.html" class="text-foot me-2">Terms</a></li>
-                        <li class="list-inline-item"><a href="privacy.html" class="text-foot me-2">Privacy</a></li>
-                        <li class="list-inline-item"><a href="aboutus.html" class="text-foot me-2">About</a></li>
-                        <li class="list-inline-item"><a href="contact.html" class="text-foot me-2">Contact</a></li>
-                    </ul>
+
                 </div><!--end col-->
             </div><!--end row-->
         </div>
@@ -329,8 +313,6 @@
 <!-- Offcanvas Start -->
 <div class="offcanvas offcanvas-end shadow border-0" tabindex="-1" id="offcanvasRight"
      aria-labelledby="offcanvasRightLabel">
-
-
 
 
 </div>

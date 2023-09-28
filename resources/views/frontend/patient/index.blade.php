@@ -136,7 +136,7 @@
 
                                 <div class="tab-pane fade" id="pills-experience" role="tabpanel" aria-labelledby="experience-tab">
                                     <h5 class="mb-0">Personal Information :</h5>
-                                    <div class="row align-items-center mt-4">
+                                  {{--  <div class="row align-items-center mt-4">
                                         <div class="col-lg-2 col-md-4">
                                             <img src="../assets/images/client/09.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt="">
                                         </div><!--end col-->
@@ -146,53 +146,154 @@
                                             <p class="text-muted mb-0">For best results, use an image at least 256px by 256px in either .jpg or .png format</p>
                                         </div><!--end col-->
 
-                                        <div class="col-lg-5 col-md-12 text-lg-right text-center mt-4 mt-lg-0">
+                                        <div class="col-lg-5 col-md-6 text-lg-right text-center mt-4 mt-lg-0">
                                             <a href="#" class="btn btn-primary">Upload</a>
                                             <a href="#" class="btn btn-soft-primary ms-2">Remove</a>
                                         </div><!--end col-->
-                                    </div><!--end row-->
+                                    </div><!--end row-->--}}
 
-                                    <form class="mt-4">
+                                    <form method="post" action="/patient/profile-update" class="mt-4">
+                                        @csrf
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">First Name</label>
-                                                    <input name="name" id="name" type="text" class="form-control" placeholder="First Name :">
-                                                </div>
-                                            </div><!--end col-->
-
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Last Name</label>
-                                                    <input name="name" id="name2" type="text" class="form-control" placeholder="Last Name :">
-                                                </div>
-                                            </div><!--end col-->
-
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Your Email</label>
-                                                    <input name="email" id="email" type="email" class="form-control" placeholder="Your email :">
-                                                </div>
-                                            </div><!--end col-->
-
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Phone no.</label>
-                                                    <input name="number" id="number" type="text" class="form-control" placeholder="Phone no. :">
-                                                </div>
-                                            </div><!--end col-->
-
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Your Bio Here</label>
-                                                    <textarea name="comments" id="comments" rows="4" class="form-control" placeholder="Bio :"></textarea>
+                                                    <label class="form-label">Name<span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="Full Name"
+                                                           name="name" value="{{Auth::guard('applicant')->user()->name}}" ng-model="name">
                                                 </div>
                                             </div>
-                                        </div><!--end row-->
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Phone<span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="Phone"
+                                                           name="phone" value="{{Auth::guard('applicant')->user()->phone}}" ng-model="name" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Your Email {{--<span
+                                                            class="text-danger">*</span>--}}</label>
+                                                    <input type="email" class="form-control" placeholder="Email"
+                                                           name="email" value="{{Auth::guard('applicant')->user()->email}}" ng-model="email" >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Blood Group<span
+                                                            class="text-danger">*</span></label>
+                                                    <select
+                                                        class="form-control {{ $errors->has('blood_group') ? 'is-invalid' : '' }}"
+                                                        name="blood_group"  ng-model="blood_group" id="blood_group" required>
+                                                        <option value
+                                                                disabled {{ old('blood_group', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                                        @foreach(App\Models\Applicant::BLOOD_GROUP_SELECT as $key => $label)
+                                                            <option
+                                                                value="{{ $key }}" {{ Auth::guard('applicant')->user()->blood_group === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Gender<span
+                                                            class="text-danger">*</span></label> <br>
+                                                    @foreach(App\Models\Applicant::GENDER_RADIO as $key => $label)
+                                                        <div
+                                                            class="form-check form-check-inline {{ $errors->has('gender') ? 'is-invalid' : '' }}">
+                                                            <input class="form-check-input" type="radio"
+                                                                   id="gender_{{ $key }}" name="gender" value="{{Auth::guard('applicant')->user()->gender}}" ng-model="gender"
+                                                                   value="{{ $key }}"
+                                                                   {{ old('gender', '') === (string) $key ? 'checked' : '' }} required>
+                                                            <label class="form-check-label form-check-inline"
+                                                                   for="gender_{{ $key }}">{{ $label }}</label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Division <span
+                                                            class="text-danger">*</span></label>
+                                                    <select
+                                                        class="form-control select2 {{ $errors->has('division') ? 'is-invalid' : '' }}"
+                                                        name="division_id"  value="{{Auth::guard('applicant')->user()->phone}}" ng-model="division_id" id="division_id">
+                                                        @foreach($divisions as $id => $entry)
+                                                            <option
+                                                                value="{{ $id }}" {{ Auth::guard('applicant')->user()->division_id == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">District <span
+                                                            class="text-danger">*</span></label>
+                                                    <select
+                                                        class="form-control select2 {{ $errors->has('district') ? 'is-invalid' : '' }}"
+                                                        name="district_id" ng-model="district_id" id="district_id">
+                                                        @foreach($districts as $id => $entry)
+                                                            <option
+                                                                value="{{ $id }}" {{ Auth::guard('applicant')->user()->district_id == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Area <span
+                                                            class="text-danger">*</span></label>
+                                                    <select
+                                                        class="form-control select2 {{ $errors->has('upazila') ? 'is-invalid' : '' }}"
+                                                        name="upazila_id" ng-model="upazila_id" id="upazila_id">
+                                                        @foreach($upazilas as $id => $entry)
+                                                            <option
+                                                                value="{{ $id }}" {{ Auth::guard('applicant')->user()->upazila_id == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Address<span
+                                                            class="text-danger">*</span></label>
+                                                    <textarea class="form-control " name="address"  ng-model="address"
+                                                              id="address">{{Auth::guard('applicant')->user()->address}}</textarea>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Age<span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="number" class="form-control" placeholder="Age"
+                                                           name="age" value="{{Auth::guard('applicant')->user()->age}}" ng-model="age" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Date Of Birth<span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="date" class="form-control" placeholder="Birth Date"
+                                                           name="dob" ng-model="dob" value="{{Auth::guard('applicant')->user()->dob}}" required="">
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+                                        </div>
+
 
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save changes">
+                                                <input type="submit" class="btn btn-primary" value="Save changes">
                                             </div><!--end col-->
                                         </div><!--end row-->
                                     </form><!--end form-->
