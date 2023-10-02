@@ -31,6 +31,7 @@ class VideoController extends Controller
 
     public function store(StoreVideoRequest $request)
     {
+        $request['youtube_link']= $this->getYoutubeVideoId($request['youtube_link']);
         $video = Video::create($request->all());
 
         return redirect()->route('admin.videos.index');
@@ -44,7 +45,10 @@ class VideoController extends Controller
     }
 
     public function update(UpdateVideoRequest $request, Video $video)
+
     {
+        $request['youtube_link']= $this->getYoutubeVideoId($request['youtube_link']);
+
         $video->update($request->all());
 
         return redirect()->route('admin.videos.index');
@@ -75,5 +79,16 @@ class VideoController extends Controller
         }
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    function getYoutubeVideoId($link)
+    {
+        preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $link, $matches);
+        if ($matches != null) {
+            $video = $matches[0];
+        } else {
+            $video = "";
+        }
+        return $video;
     }
 }

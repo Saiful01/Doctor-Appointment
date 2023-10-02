@@ -13,17 +13,15 @@
     <meta name="Version" content="v1.4.0"/>
     <!-- favicon -->
     <link rel="shortcut icon" href="https://shreethemes.in/doctris/layouts/assets/images/favicon.ico">
-    <!-- Css -->
-    <link href="/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
-    <link href="/assets/libs/tobii/css/tobii.min.css" rel="stylesheet">
-    <!-- Bootstrap Css -->
-    <link href="/assets/css/bootstrap.min.css" class="theme-opt" rel="stylesheet" type="text/css"/>
-    <!-- Icons Css -->
-    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
-    <link href="/assets/libs/remixicon/fonts/remixicon.css" rel="stylesheet" type="text/css"/>
-    <link href="/assets/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet"/>
-    <!-- Style Css-->
-    <link href="/assets/css/style.min.css" class="theme-opt" rel="stylesheet" type="text/css"/>
+
+    <link href="{{ asset('/assets/libs/tiny-slider/tiny-slider.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/libs/tobii/css/tobii.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/icons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/libs/remixicon/fonts/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/libs/%40iconscout/unicons/css/line.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/style.min.css') }}" rel="stylesheet">
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>

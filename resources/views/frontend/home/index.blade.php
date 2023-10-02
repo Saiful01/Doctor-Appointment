@@ -102,7 +102,7 @@
             </div><!--end row-->
         </div><!--end container-->
 
-        <div class="container mt-100 mt-60">
+       {{-- <div class="container mt-100 mt-60">
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="section-title mb-4 pb-2 text-center">
@@ -235,7 +235,7 @@
                     </div>
                 </div><!--end col-->
             </div><!--end row-->
-        </div><!--end container-->
+        </div><!--end container-->--}}
     </section><!--end section-->
     <!-- End -->
 
