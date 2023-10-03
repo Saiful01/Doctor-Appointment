@@ -7,7 +7,7 @@
 use App\Http\Controllers\ApplicantActivityController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PublicApiController;
-
+use Illuminate\Support\Facades\Artisan;
 
 
 Route::get('/', [Controller::class, 'home'])->name('home');
@@ -212,5 +212,9 @@ Route::get('/clear-cache', function () {
     Artisan::call('view:clear');
 
     return "Cache cleared successfully";
+});
+
+Route::get('/link-storage', function () {
+    Artisan::call('storage:link');
 });
 
