@@ -18,6 +18,8 @@ Route::post('/admin/login', [UsersApiController::class, 'loginUser']);
 Route::post('/applicant/login', [ApplicantApiController::class, 'patientLogin']);
 Route::post('/applicant/registration', [ApplicantApiController::class, 'registrationSave']);
 Route::post('/applicant/registration-otp/send', [ApplicantApiController::class, 'otpSent']);
+Route::post('/applicant/forgot-password-otp/send', [ApplicantApiController::class, 'forgotOtpSent']);
+Route::post('/applicant/forgot-password-update', [ApplicantApiController::class, 'forgotPasswordUpdate']);
 Route::post('/applicant/otp/verify', [ApplicantApiController::class, 'otpVerify']);
 Route::get('/divisions', [DivisionApiController::class, 'index']);
 Route::get('/districts', [DistrictApiController::class, 'index']);

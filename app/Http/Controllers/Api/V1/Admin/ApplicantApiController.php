@@ -49,7 +49,99 @@ class ApplicantApiController extends Controller
                 'phone' => $phone,
             ];
         }
-        $otp = rand(1000, 9999);
+        /*$otp = rand(1000, 9999);*/
+        $otp= 1234;
+        $is_exist = Otp::where('phone', $phone)->where('is_used', false)->orderBy('created_at', 'DESC')->first();
+        if ($is_exist) {
+            if (Carbon::parse($is_exist->created_at)
+                    ->addSeconds(120) >= \Carbon\Carbon::now()) {
+                $message = "You have an active OTP";
+                $code = 201;
+                $expire_time = Carbon::parse($is_exist->created_at)->addSeconds(120);
+                $time_expire = $expire_time->diffInSeconds(\Carbon\Carbon::now());
+
+                return [
+                    'code' => $code,
+                    'message' => $message,
+                    'time' => $time_expire,
+                    'otp' => $is_exist->otp,
+                ];
+            } else {
+                $code = 200;
+                $message = "Check your inbox for OTP";
+                Otp::create([
+                    'phone' => $phone,
+                    'otp' => $otp,
+                ]);
+                $sms = "Your Dr Mustafiz Appointment verification code is " . $otp;
+               /* $sms_status = sendSms($phone, $sms);*/
+
+            }
+        } else {
+            $code = 200;
+            $message = "Check your inbox for OTP";
+
+            $sms = "Your Dr Mustafiz Appointment verification code is " . $otp;
+           /* $sms_status = sendSms($phone, $sms);*/
+            Otp::create([
+                'phone' => $phone,
+                'otp' => $otp,
+            ]);
+
+        }
+        return [
+            'code' => $code,
+            'message' => $message,
+            'data' => $request->all(),
+            'otp' => $otp,
+        ];
+    }
+    public function forgotOtpSent(Request $request)
+    {
+
+
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+
+            return [
+
+                'code' => 400,
+                'message' => "Phone Number is Required",
+                'data' => $request->all(),
+
+            ];
+        }
+        $phone = $request['phone'];
+
+        $exist= Applicant::wherePhone($phone)->first();
+        if (!$exist) {
+
+            return [
+                'code' => 400,
+                'message' => "This phone number has no Account",
+                'data' => $request->all(),
+                'phone' => $phone,
+            ];
+
+
+
+        }
+
+
+
+        if ($this->validatePhoneNumber($phone) != 1) {
+            return [
+                'code' => 400,
+                'message' => "The number is not valid",
+                'data' => $request->all(),
+                'phone' => $phone,
+            ];
+        }
+        /*$otp = rand(1000, 9999);*/
+        $otp= 1234;
         $is_exist = Otp::where('phone', $phone)->where('is_used', false)->orderBy('created_at', 'DESC')->first();
         if ($is_exist) {
             if (Carbon::parse($is_exist->created_at)
@@ -144,6 +236,66 @@ class ApplicantApiController extends Controller
 
             }
         }
+    }
+    public function forgotPasswordUpdate(Request $request)
+    {
+
+        // return $request->all();
+
+
+        $validator = Validator::make($request->all(), [
+
+            "phone" => 'required',
+            "password" => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return [
+                'code' => 400,
+                'message' => 'validation error',
+                'errors' => $validator->errors(),
+                'request_data' => $request->all(),
+            ];
+        }
+
+        $exist= Applicant::wherePhone($request['phone'])->first();
+        if (!$exist) {
+
+            return [
+                'code' => 400,
+                'message' => "This phone number has no Account",
+                'data' => $request->all(),
+
+            ];
+
+
+
+        }
+
+        $request['password'] = Hash::make($request['password']);
+
+
+        try {
+            $applicant = Applicant::wherePhone($request['phone'])->update(
+                [
+                    'password' => $request['password'],
+                ]
+            );
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Password Successfully Updated',
+                'applicant_data' => $applicant,
+            ], 200);
+
+        } catch (\Exception $e) {
+            return [
+                'code' => 400,
+                'message' => $e->getMessage(),
+            ];
+        }
+
     }
 
     public function registrationSave(Request $request)
