@@ -14,13 +14,13 @@
     <!-- favicon -->
     <link rel="shortcut icon" href="https://shreethemes.in/doctris/layouts/assets/images/favicon.ico">
     <!-- Css -->
--    <link href="{{ asset('/public/assets/libs/tiny-slider/tiny-slider.css') }}" rel="stylesheet">
-    <link href="{{ asset('/public/assets/libs/tobii/css/tobii.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/public/assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/public/assets/css/icons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/public/assets/libs/remixicon/fonts/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('/public/assets/libs/%40iconscout/unicons/css/line.css') }}" rel="stylesheet">
-    <link href="{{ asset('/public/assets/css/style.min.css') }}" rel="stylesheet">
+-    <link href="{{ asset('/assets/libs/tiny-slider/tiny-slider.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/libs/tobii/css/tobii.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/icons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/libs/remixicon/fonts/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/libs/%40iconscout/unicons/css/line.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/style.min.css') }}" rel="stylesheet">
 
 
 
@@ -33,7 +33,7 @@
         console.log("app created")
     </script>
 
-    <script src="/public/assets/js/custom_angular.js"></script>
+    <script src="/assets/js/custom_angular.js"></script>
 
 </head>
 

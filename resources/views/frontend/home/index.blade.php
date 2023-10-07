@@ -4,14 +4,14 @@
 
     <!-- Start Hero -->
     <section class="bg-half-260 d-table w-100"
-             style="background: url('../public/assets/images/home-one-img.png') center; background-repeat: no-repeat; background-color: #191d73">
+             style="background: url('../assets/images/home-one-img.png') center; background-repeat: no-repeat; background-color: #191d73">
         <div class="bg-overlay bg-overlay-dark"></div>
         <div class="container">
             <div class="row mt-5 mt-lg-0">
                 <div class="col-12">
                     <a href="{{route('book.appointment')}}">
                         <div class="heading-title">
-                            <img src="/public/assets/images/logo-icon.png" height="50" alt="">
+                            <img src="/assets/images/logo-icon.png" height="50" alt="">
                             <h4 class="display-4 fw-bold text-white title-dark mt-3 mb-4">Meet The
                                 <br> {{$doctor->name}}</h4>
                             <p class="para-desc text-white-50 mb-0">{{$doctor->short_details}}</p>
@@ -82,7 +82,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <div class="position-relative">
-                        <img src="/public/assets/images/about-img.png" class="img-fluid" alt="">
+                        <img src="/assets/images/about-img.png" class="img-fluid" alt="">
 
                     </div>
                 </div><!--end col-->
@@ -259,7 +259,7 @@
                             <p class="text-muted fw-normal fst-italic">" It seems that only fragments of the original
                                 text remain in the Lorem Ipsum texts used today. The most well-known dummy text is the
                                 'Lorem Ipsum', which is said to have originated in the 16th century. "</p>
-                            <img src="/public/assets/images/client/01.jpg"
+                            <img src="/assets/images/client/01.jpg"
                                  class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt="">
                             <ul class="list-unstyled mb-0">
                                 <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -275,7 +275,7 @@
                             <p class="text-muted fw-normal fst-italic">" The advantage of its Latin origin and the
                                 relative meaninglessness of Lorum Ipsum is that the text does not attract attention to
                                 itself or distract the viewer's attention from the layout. "</p>
-                            <img src="/public/assets/images/client/02.jpg"
+                            <img src="/assets/images/client/02.jpg"
                                  class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt="">
                             <ul class="list-unstyled mb-0">
                                 <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -292,7 +292,7 @@
                                 texts. These are usually used when a text is required purely to fill a space. These
                                 alternatives to the classic Lorem Ipsum texts are often amusing and tell short, funny or
                                 nonsensical stories. "</p>
-                            <img src="/public/assets/images/client/03.jpg"
+                            <img src="/assets/images/client/03.jpg"
                                  class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt="">
                             <ul class="list-unstyled mb-0">
                                 <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -309,7 +309,7 @@
                                 traced back to a text composed by Cicero in 45 BC. Allegedly, a Latin scholar
                                 established the origin of the text by compiling all the instances of the unusual word
                                 'consectetur' he could find "</p>
-                            <img src="/public/assets/images/client/04.jpg"
+                            <img src="/assets/images/client/04.jpg"
                                  class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt="">
                             <ul class="list-unstyled mb-0">
                                 <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -325,7 +325,7 @@
                             <p class="text-muted fw-normal fst-italic">" It seems that only fragments of the original
                                 text remain in the Lorem Ipsum texts used today. The most well-known dummy text is the
                                 'Lorem Ipsum', which is said to have originated in the 16th century. "</p>
-                            <img src="/public/assets/images/client/05.jpg"
+                            <img src="/assets/images/client/05.jpg"
                                  class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt="">
                             <ul class="list-unstyled mb-0">
                                 <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -342,7 +342,7 @@
                                 text remain in the Lorem Ipsum texts used today. One may speculate that over the course
                                 of time certain letters were added or deleted at various positions within the text.
                                 "</p>
-                            <img src="/public/assets/images/client/06.jpg"
+                            <img src="/assets/images/client/06.jpg"
                                  class="img-fluid avatar avatar-small rounded-circle mx-auto shadow my-3" alt="">
                             <ul class="list-unstyled mb-0">
                                 <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -377,7 +377,7 @@
                                 <img src="{{ $item->featured_image->getUrl('thumb') }}" class="img-fluid" alt="">
                             @else
 
-                            <img src="/public/assets/images/blog/01.jpg" class="img-fluid" alt="">
+                            <img src="/assets/images/blog/01.jpg" class="img-fluid" alt="">
                             @endif
                             <div class="card-body p-4">
                                 <ul class="list-unstyled mb-2">
