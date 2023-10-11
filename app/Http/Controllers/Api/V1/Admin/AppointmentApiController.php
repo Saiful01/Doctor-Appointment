@@ -17,19 +17,29 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AppointmentApiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
        // abort_if(Gate::denies('appointment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $query=Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status']);
 
-        return new AppointmentResource(Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->get());
+        if ($request['hospital_id']){
+            $query->where('hospital_id', $request['hospital_id']);
+        }
+
+
+        $appointments = $query->OrderBy('created_at', "DESC")->get();
+
+        return new AppointmentResource($appointments);
+
+
     }
     public function todayAppointments(Request $request)
     {
        // abort_if(Gate::denies('appointment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $query = Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->where('appoint_date', Carbon::today());
+        $query = Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->whereDate('appoint_date', Carbon::today());
 
-        if (!$request['hospital_id']){
+        if ($request['hospital_id']){
             $query->where('hospital_id', $request['hospital_id']);
         }
 
@@ -50,7 +60,7 @@ class AppointmentApiController extends Controller
     }
     public function applicantTodayAppointments(Request $request)
     {
-       $query = Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->where('applicant_id', $request['applicant_id'])->where('appoint_date', Carbon::today());
+       $query = Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->where('applicant_id', $request['applicant_id'])->whereDate('appoint_date', Carbon::today());
 
        $appointments = $query->OrderBy('created_at', "DESC")->get();
 

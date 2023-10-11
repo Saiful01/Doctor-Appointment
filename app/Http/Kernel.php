@@ -32,10 +32,11 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\SetLocale::class,
         ],
         'api' => [
-             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            \Illuminate\Routing\Middleware\ThrottleRequests::class . ':api',
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            \Illuminate\Routing\Middleware\ThrottleRequests::class . ':1000,1', // 100 requests per minute
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
     ];
 
     protected $middlewareAliases = [
