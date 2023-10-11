@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row mt-5 mt-lg-0">
                 <div class="col-12">
-                    <a href="{{route('book.appointment')}}">
+                    <a href="{{route('applicant.book.appointment')}}">
                         <div class="heading-title">
                             <img src="/assets/images/logo-icon.png" height="50" alt="">
                             <h4 class="display-4 fw-bold text-white title-dark mt-3 mb-4">Meet The
@@ -241,7 +241,7 @@
 
     <!-- Start -->
     <section class="section">
-        <div class="container">
+     {{--   <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="section-title text-center mb-4 pb-2">
@@ -356,7 +356,7 @@
                     </div><!--end carousel-->
                 </div><!--end col-->
             </div><!--end row-->
-        </div><!--end container-->
+        </div><!--end container-->--}}
 
         <div class="container mt-100 mt-60" id="blog">
             <div class="row justify-content-center">

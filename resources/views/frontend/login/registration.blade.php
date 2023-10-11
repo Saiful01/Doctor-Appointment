@@ -6,7 +6,7 @@
     <section class="bg-half-150 d-table w-100 bg-light"
              style="background: url('/assets/images/bg/bg-lines-one.png') center;">
 
-        <form>
+
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-8">
@@ -23,7 +23,7 @@
                                                             class="text-danger">*</span></label>
                                                     <input type="text" class="form-control"
                                                            placeholder="Your Phone Number"
-                                                           name="phone" ng-model="phone" required="">
+                                                           name="phone" ng-model="phone" >
                                                 </div>
                                                 <div class="col-sm-12 form-group mb-0">
                                                     <button class="btn btn-primary mt-2 " id="send_otp_button"
@@ -78,7 +78,7 @@
                                                             class="text-danger">*</span></label>
                                                     <select
                                                         class="form-control {{ $errors->has('blood_group') ? 'is-invalid' : '' }}"
-                                                        name="blood_group" ng-model="blood_group" id="blood_group" required>
+                                                        name="blood_group" ng-model="blood_group" id="blood_group" >
                                                         <option value
                                                                 disabled {{ old('blood_group', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                                         @foreach(App\Models\Applicant::BLOOD_GROUP_SELECT as $key => $label)
@@ -98,7 +98,7 @@
                                                             <input class="form-check-input" type="radio"
                                                                    id="gender_{{ $key }}" name="gender" ng-model="gender"
                                                                    value="{{ $key }}"
-                                                                   {{ old('gender', '') === (string) $key ? 'checked' : '' }} required>
+                                                                   {{ old('gender', '') === (string) $key ? 'checked' : '' }} >
                                                             <label class="form-check-label form-check-inline"
                                                                    for="gender_{{ $key }}">{{ $label }}</label>
                                                         </div>
@@ -162,7 +162,7 @@
                                                     <label class="form-label">Age<span
                                                             class="text-danger">*</span></label>
                                                     <input type="number" class="form-control" placeholder="Age"
-                                                           name="age" ng-model="age" required="">
+                                                           name="age" ng-model="age" >
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -170,7 +170,7 @@
                                                     <label class="form-label">Date Of Birth<span
                                                             class="text-danger">*</span></label>
                                                     <input type="date" class="form-control" placeholder="Birth Date"
-                                                           name="dob" ng-model="dob" required="">
+                                                           name="dob" ng-model="dob" >
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -234,7 +234,7 @@
                     </div> <!--end col-->
                 </div><!--end row-->
             </div> <!--end container-->
-        </form>
+
     </section><!--end section-->
     <!-- Hero End -->
 

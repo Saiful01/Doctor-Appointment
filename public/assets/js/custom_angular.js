@@ -1,7 +1,7 @@
 app.controller('appointmentController', function ($scope, $http, $location) {
 
 
-    console.log('angular active')
+
 
 
     var intervalId;
@@ -23,9 +23,7 @@ app.controller('appointmentController', function ($scope, $http, $location) {
     $scope.sendOtp = function () {
 
 
-
-
-        if ($scope.phone == null || $scope.phone.toString().length < 10) {z
+  if ($scope.phone == null || $scope.phone.toString().length < 10) {z
             messageError('Please enter a valid phone number with at least 10 digits')
             return;
         }

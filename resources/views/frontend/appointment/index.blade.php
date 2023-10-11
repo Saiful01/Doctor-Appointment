@@ -66,7 +66,7 @@
                                                 <label class="form-label">Please Select Your Serial <span
                                                         class="text-danger">*</span></label> <br>
                                                 @foreach($hospital1 as $item)
-                                                    <span
+                                                    <span style="width: 100%;"
                                                         ng-click="serialCheck({{$item->is_book}}, '{{$item->id}}' , $event)"
                                                         ng-class="{'btn-primary': {{$item->is_book}} == 0, 'btn-danger': {{$item->is_book}} == 1, 'btn-success': {{$item->is_book}} == 0 && selectedButton == '{{$item->title}}'}"
                                                         class="btn mt-1">
