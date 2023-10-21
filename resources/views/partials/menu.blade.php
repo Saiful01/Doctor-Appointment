@@ -86,7 +86,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('appointment_status_access')
+               {{--     @can('appointment_status_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.appointment-statuses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/appointment-statuses") || request()->is("admin/appointment-statuses/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-calendar-alt c-sidebar-nav-icon">
@@ -105,7 +105,7 @@
                                 {{ trans('cruds.appointmentReport.title') }}
                             </a>
                         </li>
-                    @endcan
+                    @endcan--}}
                 </ul>
             </li>
         @endcan

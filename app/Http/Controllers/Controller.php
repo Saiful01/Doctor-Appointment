@@ -28,8 +28,7 @@ class Controller extends BaseController
 
     public function home()
     {
-
-          $doctor = Doctor::with(['designation', 'specialists', 'hospitals', 'days', 'media'])->first();
+        $doctor = Doctor::with(['designation', 'specialists', 'hospitals', 'days', 'media'])->first();
 
           $hospitals= Hospital::get();
           $blogs= Blog::get();

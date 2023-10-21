@@ -31,6 +31,7 @@
 </head>
 
 <body class="c-app">
+@include('sweetalert::alert')
     @include('partials.menu')
     <div class="c-wrapper">
         <header class="c-header c-header-fixed px-3">

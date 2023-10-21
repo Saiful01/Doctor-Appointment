@@ -6,6 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyTodaysAppointmentRequest;
 use App\Http\Requests\StoreTodaysAppointmentRequest;
 use App\Http\Requests\UpdateTodaysAppointmentRequest;
+use App\Models\Applicant;
+use App\Models\Appointment;
+use App\Models\Doctor;
+use App\Models\DoctorSerial;
+use App\Models\GuestPatient;
+use App\Models\Hospital;
+use App\Models\Status;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +23,23 @@ class TodaysAppointmentController extends Controller
     {
         abort_if(Gate::denies('todays_appointment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.todaysAppointments.index');
+        $appointments = Appointment::with(['applicant', 'doctor', 'hospital', 'guest_patient', 'serial', 'status'])->whereDate('appoint_date', today())->get();
+
+        $applicants = Applicant::get();
+
+        $doctors = Doctor::get();
+
+        $hospitals = Hospital::get();
+
+        $guest_patients = GuestPatient::get();
+
+        $doctor_serials = DoctorSerial::get();
+
+        $statuses = Status::get();
+
+        return view('admin.todaysAppointments.index', compact('applicants', 'appointments', 'doctor_serials', 'doctors', 'guest_patients', 'hospitals', 'statuses'));
+
+
     }
 
     public function create()

@@ -11,6 +11,7 @@ use App\Models\AppointmentStatus;
 use App\Models\Status;
 use Gate;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\Response;
 
 class AppointmentStatusController extends Controller
@@ -22,6 +23,30 @@ class AppointmentStatusController extends Controller
         $appointmentStatuses = AppointmentStatus::with(['appointment', 'status'])->get();
 
         return view('admin.appointmentStatuses.index', compact('appointmentStatuses'));
+    }
+    public function statusUpdate($appointment_id, $status_id)
+    {
+
+        $appoint_status= AppointmentStatus::where('appointment_id',$appointment_id )->where('status_id',$status_id)->first();
+        if ($appoint_status){
+
+            Alert::error('Sorry! ', "This status already exist ");
+            return back();
+
+        }
+        $array=[
+            'appointment_id'=> $appointment_id,
+            'status_id'=> $status_id,
+        ];
+       $appointmentStatuses = AppointmentStatus::create($array);
+
+       Appointment::where('id', $appointment_id)->update([
+           'status_id'=>$status_id
+       ]);
+
+
+        Alert::success('Congratulations! ', "Status Updated");
+       return back();
     }
 
     public function create()

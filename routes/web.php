@@ -4,6 +4,7 @@
 
 //Web Api Routes
 
+use App\Http\Controllers\Admin\AppointmentStatusController;
 use App\Http\Controllers\ApplicantActivityController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PublicApiController;
@@ -106,6 +107,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Appointment Status
     Route::delete('appointment-statuses/destroy', 'AppointmentStatusController@massDestroy')->name('appointment-statuses.massDestroy');
     Route::resource('appointment-statuses', 'AppointmentStatusController');
+    Route::get('appointment-status-update/{appointment}/{status}', [AppointmentStatusController::class, 'statusUpdate'])->name('status.update');
 
     // Specialist
     Route::delete('specialists/destroy', 'SpecialistController@massDestroy')->name('specialists.massDestroy');
