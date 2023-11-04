@@ -26,6 +26,11 @@ class AppointmentApiController extends Controller
             $query->where('hospital_id', $request['hospital_id']);
         }
 
+        if ($request['appoint_date']){
+            $query->whereDay('appoint_date', $request['appoint_date']);
+
+        }
+
 
         $appointments = $query->OrderBy('created_at', "DESC")->get();
 
@@ -87,11 +92,10 @@ class AppointmentApiController extends Controller
         }
 
         $createdAt = Carbon::parse($request['dob']);
-        $request['dob'] = $createdAt->format('d-m-Y');
         $guest = [
             'name' => $request['name'],
             'phone' => $request['phone'],
-            'dob' => $request['d-m-y'],
+            'age' => $request['age'],
             'address' => $request['address'],
         ];
 

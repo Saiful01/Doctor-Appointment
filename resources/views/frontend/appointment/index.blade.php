@@ -134,10 +134,10 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">DOB <span
+                                                    <label class="form-label">Age <span
                                                             class="text-danger">*</span></label>
-                                                    <input name="dob" ng-model="dob" type="date"
-                                                           class="form-control" placeholder="Patient Date Of Birth :">
+                                                    <input name="age" ng-model="age" type="number"
+                                                           class="form-control" placeholder="Patient Age :">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

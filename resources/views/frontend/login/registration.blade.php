@@ -1,10 +1,138 @@
-@extends("layouts.details")
-@section('title', 'Sign-Up')
-@section("content")
+<!doctype html>
+<html lang="en" dir="ltr">
 
-    <!-- Hero Start -->
-    <section class="bg-half-150 d-table w-100 bg-light"
-             style="background: url('/assets/images/bg/bg-lines-one.png') center;">
+@include('frontend.common.head')
+
+<body ng-app="myApp" ng-controller="regController">
+@include('sweetalert::alert')
+
+<header id="topnav" class="defaultscroll sticky">
+    <div class="container">
+        @php
+            $platform=\App\Models\Platform::first();
+        @endphp
+            <!-- Logo container-->
+        <a class="logo" href="/">
+            @if($platform)
+                @if($platform->logo)
+                    <img src="{{ $platform->logo->getUrl('thumb') }}" class="l-dark" alt="">
+                    <img src="{{ $platform->logo->getUrl('thumb') }}" class="l-light" alt="Logo">
+
+                @endif
+            @else
+                <img src="/assets/images/logo-light.png" class="l-light"  alt="">
+
+            @endif
+        </a>
+        <!-- Logo End -->
+
+        <!-- Start Mobile Toggle -->
+        <div class="menu-extras">
+            <div class="menu-item">
+                <!-- Mobile menu toggle-->
+                <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                    <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
+                <!-- End mobile menu toggle-->
+            </div>
+        </div>
+        <!-- End Mobile Toggle -->
+
+        <!-- Start Dropdown -->
+        <ul class="dropdowns list-inline mb-0">
+            {{--    <li class="list-inline-item mb-0 ms-1">
+          <a href="javascript:void(0)" class="btn btn-icon btn-pills btn-primary" data-bs-toggle="offcanvas"
+             data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+              <i data-feather="search" class="fea icon-sm text-foot align-middle"></i>
+          </a>
+      </li>--}}
+            @if(Auth::guard('applicant')->check())
+
+                <li class="list-inline-item mb-0 ms-1">
+                    <div class="dropdown dropdown-primary">
+                        <button type="button" class="btn btn-pills btn-soft-primary dropdown-toggle p-0"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                src="/assets/images/doctors/01.jpg" class="avatar avatar-ex-small rounded-circle" alt="">
+                        </button>
+                        <div class="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3"
+                             style="min-width: 200px;">
+                            <a class="dropdown-item d-flex align-items-center text-dark" href="/patient/profile">
+                                <img src="/assets/images/doctors/01.jpg"
+                                     class="avatar avatar-md-sm rounded-circle border shadow" alt="">
+                                <div class="flex-1 ms-2">
+                                    <span class="d-block mb-1">{{Auth::guard('applicant')->user()->name}}</span>
+                                    {{-- <small class="text-muted">Orthopedic</small>--}}
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-dark" href="/patient/profile"><span
+                                    class="mb-0 d-inline-block me-1"><i
+                                        class="ri-dashboard-2-fill align-middle h6"></i></span> Dashboard</a>
+
+                            <div class="dropdown-divider border-top"></div>
+                            <a class="dropdown-item text-dark" href="/patient/logout"><span class="mb-0 d-inline-block me-1"><i
+                                        class="ri-logout-box-fill align-middle h6"></i></span> Logout</a>
+                        </div>
+                    </div>
+                </li>
+            @else
+                <li class="list-inline-item mb-0 ms-1">
+                    <div class="dropdown dropdown-primary">
+                        <button type="button" class="btn btn-icon btn-pills btn-primary"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ri-user-line"></i>
+                        </button>
+                        <div class="dropdown-menu dd-menu dropdown-menu-end shadow border-0 mt-3 py-3"
+                             style="min-width: 200px;">
+                            <a class="dropdown-item d-flex align-items-center text-dark" href="/patient/login">
+                                <div class="flex-1 ms-2">
+                                    <span class="d-block mb-1">Login</span>
+
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center text-dark" href="/patient/registration">
+                                <div class="flex-1 ms-2">
+                                    <span class="d-block mb-1">Register</span>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            @endif
+        </ul>
+        <!-- Start Dropdown -->
+
+        <div id="navigation">
+            <!-- Navigation Menu-->
+            <ul class="navigation-menu nav-left">
+                <li class="has-submenu parent-menu-item">
+                    <a href="/" class="active">Home</a>
+
+                </li>
+                <li class="has-submenu parent-menu-item">
+                    <a href="/#about" class="active" id="aboutLink">About Us</a>
+
+                </li>
+                <li class="has-submenu parent-menu-item">
+                    <a href="/contact" class="active">Contact</a>
+
+                </li>
+                <li class="has-submenu parent-menu-item">
+                    <a href="/#blog" class="active" id="blogLink">Blog</a>
+
+                </li>
+                <li><a href="/patient/book/appointment" class="btn btn-primary">Book Appointment</a></li>
+            </ul><!--end navigation menu-->
+        </div><!--end navigation-->
+    </div><!--end container-->
+</header>
+
+
+<section class="bg-half-150 d-table w-100 bg-light"
+             style="background: url('/assets/images/bg/bg-lines-one.png') center;" >
 
 
             <div class="container">
@@ -26,9 +154,9 @@
                                                            name="phone" ng-model="phone" >
                                                 </div>
                                                 <div class="col-sm-12 form-group mb-0">
-                                                    <button class="btn btn-primary mt-2 " id="send_otp_button"
+                                                    <span class="btn btn-primary mt-2 " id="send_otp_button"
                                                             ng-click="sendOtp()">Send OTP
-                                                    </button>
+                                                    </span>
                                                 </div>
                                             </div>
 
@@ -235,8 +363,7 @@
                 </div><!--end row-->
             </div> <!--end container-->
 
-    </section><!--end section-->
-    <!-- Hero End -->
+    </section>
 
     <script>
 
@@ -244,7 +371,245 @@
             document.getElementById("otp-area").style.display = "none";
             document.getElementById("timer").style.display = "none";
             document.getElementById("registration-area").style.display = "none";
-            document.getElementById("loader").style.display = "none";
+
+    </script>
+    <script>
+        app.controller('regController', function ($scope, $http, $location) {
+            console.log('Registration Controller')
+            var intervalId;
+
+          $scope.sendOtp = function () {
+
+
+                if ($scope.phone == null || $scope.phone.toString().length < 10) {z
+                    messageError('Please enter a valid phone number with at least 10 digits')
+                    return;
+                }
+
+                if (isNaN($scope.phone)) {
+                    messageError('Please Enter Number Not String')
+                    return;
+                }
+                if ($scope.phone.toString().charAt(0) !== '0') {
+                    $scope.phone = '0' + $scope.phone;
+                }
+
+                //console.log($scope.phone)
+
+                let url = "/web-api/otp-sent";
+
+                let params = {
+                    'phone': $scope.phone,
+                };
+                /*  document.getElementById("loader").style.display = "block";*/
+                $http.post(url, params).then(function success(response) {
+
+                    // console.log(response.data)
+
+                    if (response.data.code == 200) {
+                        messageSuccess(response.data.message)
+                        $scope.startCounter(120);
+                        console.log(response.data.otp)
+                        document.getElementById("phone-area").style.display = "none";
+                        document.getElementById("otp-area").style.display = "block";
+                        document.getElementById("timer").style.display = "block";
+                        document.getElementById("registration-area").style.display = "none";
+
+
+                    } else {
+
+                        /* document.getElementById("loader").style.display = "none";*/
+
+                        messageError(response.data.message)
+                        if (response.data.message == "You have an active OTP") {
+                            $scope.startCounter(response.data.time);
+                            document.getElementById("phone-area").style.display = "none";
+                            document.getElementById("otp-area").style.display = "block";
+                            document.getElementById("timer").style.display = "block";
+                            document.getElementById("registration-area").style.display = "none";
+
+
+                        }
+
+                    }
+
+                });
+            }
+
+            $scope.verifyOtp = function () {
+                console.log('verify OTP')
+
+                if ($scope.otp == null) {
+                    messageError('Please Enter Your OTP')
+                    return;
+                }
+                if (isNaN($scope.otp)) {
+                    messageError('Please Enter Number Not String')
+                    return;
+                }
+                let url = "/web-api/otp-verify";
+
+                let params = {
+                    'phone': $scope.phone,
+                    'otp': $scope.otp,
+                };
+                $http.post(url, params).then(function success(response) {
+                    console.log(response.data)
+
+                    if (response.data.code == 200) {
+                        messageSuccess(response.data.message)
+                        $scope.startCounter(1000);
+                        document.getElementById("phone-area").style.display = "none";
+                        document.getElementById("otp-area").style.display = "none";
+                        document.getElementById("timer").style.display = "none";
+                        document.getElementById("registration-area").style.display = "block";
+
+                    } else {
+
+                        messageError(response.data.message)
+
+                    }
+
+                });
+            }
+
+            $scope.startCounter = function (time) {
+                document.getElementById("phone-area").style.display = "none";
+                document.getElementById("otp-area").style.display = "block";
+                document.getElementById("timer").style.display = "block";
+                document.getElementById("registration-area").style.display = "none";
+
+                var sec = time;
+                clearInterval(intervalId);
+                intervalId = setInterval(function () {
+                    document.getElementById("timer").innerHTML = sec + " Seconds remaining";
+                    sec--;
+                    if (sec == 0) {
+                        document.getElementById("phone-area").style.display = "block";
+                        document.getElementById("otp-area").style.display = "none";
+                        document.getElementById("timer").style.display = "none";
+                        document.getElementById("registration-area").style.display = "none";
+                        clearInterval(intervalId);
+                    }
+                }, 1000);
+            };
+            $scope.register = function () {
+                console.log( 'all ok')
+                if ($scope.name == null) {
+                    messageError('Please Enter Your name')
+                    return;
+                }
+                if ($scope.gender == null) {
+                    messageError('Please Enter Your Gender')
+                    return;
+                }
+                if ($scope.blood_group == null) {
+                    messageError('Please Enter Your Blood Group')
+                    return;
+                }
+                if ($scope.division_id == null) {
+                    messageError('Please Enter Your Division')
+                    return;
+                }
+                if ($scope.district_id == null) {
+                    messageError('Please Enter Your District')
+                    return;
+                }
+                if ($scope.upazila_id == null) {
+                    messageError('Please Enter Your Area')
+                    return;
+                }
+                if ($scope.address == null) {
+                    messageError('Please Enter Your Address')
+                    return;
+                }
+                if ($scope.age == null) {
+                    messageError('Please Enter Your Age')
+                    return;
+                }
+                if ($scope.dob == null) {
+                    messageError('Please Enter Your Date of Birth')
+                    return;
+                }
+
+                if ($scope.password == null) {
+                    messageError('Please Enter Your password')
+                    return;
+                }
+                /*     if ($scope.cnf_password == null) {
+                         messageError('Please Enter Your Confirm password')
+                         return;
+                     }
+                     if ($scope.cnf_password != $scope.password) {
+                         messageError('Password And Confirm Password Not Match')
+                         return;
+                     }*/
+
+                let url = "/web-api/registration/save";
+                let params = {
+                    'name': $scope.name,
+                    'phone': $scope.phone,
+                    'email': $scope.email,
+                    'gender': $scope.gender,
+                    'blood_group': $scope.blood_group,
+                    'age': $scope.age,
+                    'dob': $scope.dob,
+                    'division_id': $scope.division_id,
+                    'district_id': $scope.district_id,
+                    'upazila_id': $scope.upazila_id,
+                    'address': $scope.address,
+                    'password': $scope.password,
+                };
+                $http.post(url, params).then(function success(response) {
+
+                    if (response.data.code == 200) {
+
+                        messageSuccess(response.data.message)
+                        window.location.href = "/patient/profile";
+
+                    }
+                    if (response.data.code == 400) {
+
+                        messageError(response.data.message)
+                    }
+                    console.log(response.data);
+
+                });
+
+            }
+
+
+
+            function messageError(message) {
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: message,
+                    showConfirmButton: true,
+                    timer: 3000
+                })
+
+            }
+
+            function messageSuccess(message) {
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: message,
+                    showConfirmButton: true,
+                    timer: 3000
+                })
+
+            }
+
+
+        });
+
     </script>
 
-@endsection
+</body>
+
+</html>
+

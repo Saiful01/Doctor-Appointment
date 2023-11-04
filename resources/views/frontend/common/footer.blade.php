@@ -88,8 +88,8 @@
                     <div class="text-sm-start text-center">
                         <p class="mb-0">
                             <script>document.write(new Date().getFullYear())</script>
-                            © Doctris. Design with <i class="mdi mdi-heart text-danger"></i> by <a
-                                href="" target="_blank" class="text-reset">WebAid</a>.
+                            © Dr Mustafiz. Design with <i class="mdi mdi-heart text-danger"></i> by <a
+                                href="https://www.webaidsolution.com/" target="_blank" class="text-reset">WebAid</a>.
                         </p>
                     </div>
                 </div><!--end col-->

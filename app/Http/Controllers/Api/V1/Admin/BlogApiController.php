@@ -19,8 +19,14 @@ class BlogApiController extends Controller
     public function index()
     {
         //abort_if(Gate::denies('blog_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $blogs = Blog::all();
 
-        return new BlogResource(Blog::all());
+        // Remove HTML tags from the "details" field
+        $blogs->each(function ($blog) {
+            $blog->details = strip_tags($blog->details);
+        });
+
+        return new BlogResource($blogs);
     }
 
     public function store(StoreBlogRequest $request)

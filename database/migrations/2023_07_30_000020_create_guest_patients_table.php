@@ -12,6 +12,7 @@ class CreateGuestPatientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->date('dob')->nullable();
+            $table->date('age')->nullable();
             $table->string('phone');
             $table->string('address')->nullable();
             $table->timestamps();

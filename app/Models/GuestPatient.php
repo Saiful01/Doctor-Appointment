@@ -24,6 +24,7 @@ class GuestPatient extends Model
     protected $fillable = [
         'name',
         'dob',
+        'age',
         'phone',
         'address',
         'created_at',

@@ -9,6 +9,7 @@ use App\Http\Controllers\ApplicantActivityController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PublicApiController;
 use Illuminate\Support\Facades\Artisan;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 Route::get('/', [Controller::class, 'home'])->name('home');
@@ -201,6 +202,24 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile', 'ChangePasswordController@updateProfile')->name('password.updateProfile');
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
+});
+
+Route::post('/contact/send', function (\Illuminate\Http\Request $request) {
+    //return $request->all();
+    $name = $request['name'];
+    $phone = $request['Phone'];
+    $email = $request['email'];
+    $subject = $request['Subject'];
+    $message = $request['message'];
+
+
+    $msg = "Name : $name,\n Phone: $phone ,\n Email : $email ,\n Subject : $subject ,\n Message : $message";
+
+    mail("saiful013101@gmail.com", "Dr Mustafiz website Message", $msg);
+
+    Alert::success('Congrats', 'Your Message Successfully Send');
+
+    return back();
 });
 
 Route::get('/create-storage-link', function () {

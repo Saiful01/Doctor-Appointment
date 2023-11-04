@@ -198,7 +198,7 @@ class PublicApiController extends Controller
         $guest = [
             'name' => $request['name'],
             'phone' => $request['phone'],
-            'dob' => $request['d-m-y'],
+            'dob' => $request['age'],
             'address' => $request['address'],
         ];
 

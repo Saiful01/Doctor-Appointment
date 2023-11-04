@@ -56,7 +56,7 @@ app.controller('appointmentController', function ($scope, $http, $location) {
                 document.getElementById("otp-area").style.display = "block";
                 document.getElementById("timer").style.display = "block";
                 document.getElementById("registration-area").style.display = "none";
-                document.getElementById("loader").style.display = "none";
+
 
             } else {
 
@@ -399,8 +399,8 @@ app.controller('appointmentController', function ($scope, $http, $location) {
                 messageError('Please Enter Your Patient Phone')
                 return;
             }
-            if (!$scope.dob) {
-                messageError('Please Enter Your Patient Date Of Birth')
+            if (!$scope.age) {
+                messageError('Please Enter Your Patient Age')
                 return;
             }
             if (!$scope.address) {
@@ -421,7 +421,7 @@ app.controller('appointmentController', function ($scope, $http, $location) {
             'applicant_type': $scope.selectedApplicantType,
             'name': $scope.name,
             'phone': $scope.phone,
-            'dob': $scope.dob,
+            'age': $scope.age,
             'address': $scope.address,
 
         };
